@@ -12,534 +12,499 @@
 />
 
 <style>
-* {
-  box-sizing: border-box;
+
+*{
+  box-sizing:border-box;
 }
 
 html,
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  font-family: Arial, "Noto Sans Thai", sans-serif;
-  background: #eef7fb;
+body{
+  margin:0;
+  width:100%;
+  height:100%;
+  font-family:Arial,"Noto Sans Thai",sans-serif;
 }
 
-#app {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+body{
+  background:#eef7fb;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
-.header {
-  height: 72px;
-  background: white;
-  border-bottom: 1px solid #dce8ee;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 10px 16px;
-  position: relative;
-  z-index: 3000;
-  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+.header{
+  height:70px;
+  background:white;
+  display:flex;
+  align-items:center;
+  gap:15px;
+  padding:10px 16px;
+  border-bottom:1px solid #dce8ee;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+  position:relative;
+  z-index:3000;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 235px;
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:230px;
 }
 
-.logoIcon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: #e7f6ff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 25px;
+.logoIcon{
+  width:44px;
+  height:44px;
+  border-radius:12px;
+  background:#e8f6fd;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
 }
 
-.logoTitle {
-  font-size: 18px;
-  font-weight: 800;
-  color: #185d82;
+.logoTitle{
+  font-size:18px;
+  font-weight:800;
+  color:#185d82;
 }
 
-.logoSubtitle {
-  font-size: 11px;
-  color: #7a919c;
-  margin-top: 3px;
+.logoSub{
+  font-size:11px;
+  color:#78909c;
+  margin-top:3px;
 }
 
-/* =========================
-   SEARCH
-========================= */
+/* SEARCH */
 
-.searchArea {
-  flex: 1;
-  max-width: 650px;
-  position: relative;
+.searchArea{
+  flex:1;
+  max-width:650px;
+  position:relative;
 }
 
-.searchInput {
-  width: 100%;
-  height: 46px;
-  border: 1px solid #cbdde7;
-  border-radius: 13px;
-  background: #f8fcfe;
-  padding: 0 42px 0 44px;
-  outline: none;
-  font-size: 15px;
+.search{
+  width:100%;
+  height:45px;
+  border:1px solid #cbdde7;
+  border-radius:13px;
+  background:#f8fcfe;
+  padding:0 45px;
+  font-size:15px;
+  outline:none;
 }
 
-.searchInput:focus {
-  border-color: #269bd5;
-  background: white;
-  box-shadow: 0 0 0 3px rgba(38,155,213,.12);
+.search:focus{
+  background:white;
+  border-color:#269bd5;
+  box-shadow:0 0 0 3px rgba(38,155,213,.12);
 }
 
-.searchIcon {
-  position: absolute;
-  left: 14px;
-  top: 12px;
-  font-size: 20px;
-  color: #718995;
+.searchIcon{
+  position:absolute;
+  left:15px;
+  top:11px;
+  font-size:20px;
+  color:#78909c;
 }
 
-.clearButton {
-  position: absolute;
-  right: 10px;
-  top: 9px;
-  width: 28px;
-  height: 28px;
-  border: 0;
-  background: transparent;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 20px;
-  color: #78909c;
-  display: none;
-}
-
-.clearButton:hover {
-  background: #eaf3f7;
+.clear{
+  position:absolute;
+  right:10px;
+  top:8px;
+  width:29px;
+  height:29px;
+  border:0;
+  border-radius:50%;
+  background:transparent;
+  font-size:20px;
+  color:#78909c;
+  cursor:pointer;
+  display:none;
 }
 
 /* SEARCH RESULTS */
 
-.searchResults {
-  position: absolute;
-  top: 51px;
-  left: 0;
-  right: 0;
-  background: white;
-  border-radius: 12px;
-  border: 1px solid #d6e3e9;
-  box-shadow: 0 10px 30px rgba(0,0,0,.15);
-  max-height: 430px;
-  overflow-y: auto;
-  display: none;
-  z-index: 5000;
+.results{
+  position:absolute;
+  top:50px;
+  left:0;
+  right:0;
+  max-height:400px;
+  overflow:auto;
+  background:white;
+  border:1px solid #d7e3e9;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.16);
+  display:none;
+  z-index:5000;
 }
 
-.result {
-  padding: 11px 14px;
-  border-bottom: 1px solid #edf2f5;
-  cursor: pointer;
+.result{
+  padding:12px 14px;
+  border-bottom:1px solid #edf2f5;
+  cursor:pointer;
 }
 
-.result:hover {
-  background: #eff9fe;
+.result:hover{
+  background:#eff9fe;
 }
 
-.resultType {
-  font-size: 10px;
-  font-weight: 800;
-  color: #269bd5;
-  text-transform: uppercase;
+.resultType{
+  font-size:10px;
+  font-weight:800;
+  color:#269bd5;
 }
 
-.resultEnglish {
-  font-size: 14px;
-  font-weight: 700;
-  color: #315c70;
-  margin-top: 3px;
+.resultEN{
+  font-size:14px;
+  font-weight:700;
+  color:#315b6e;
+  margin-top:3px;
 }
 
-.resultThai {
-  font-size: 13px;
-  color: #718894;
-  margin-top: 2px;
+.resultTH{
+  font-size:13px;
+  color:#78909c;
+  margin-top:2px;
 }
 
-.resultParent {
-  font-size: 10px;
-  color: #9aaab2;
-  margin-top: 3px;
+.resultParent{
+  font-size:10px;
+  color:#9aaab2;
+  margin-top:4px;
 }
 
-/* =========================
-   LANGUAGE
-========================= */
+/* LANGUAGE */
 
-.languages {
-  display: flex;
-  gap: 4px;
+.languages{
+  display:flex;
+  gap:5px;
 }
 
-.lang {
-  border: 1px solid #d3e0e7;
-  background: white;
-  border-radius: 8px;
-  padding: 7px 9px;
-  font-size: 11px;
-  font-weight: 700;
-  cursor: pointer;
-  color: #607d8b;
+.lang{
+  border:1px solid #d4e1e8;
+  background:white;
+  border-radius:8px;
+  padding:7px 10px;
+  font-size:11px;
+  font-weight:700;
+  cursor:pointer;
+  color:#607d8b;
 }
 
-.lang.active {
-  background: #e5f5ff;
-  color: #0874aa;
-  border-color: #8ed1f1;
+.lang.active{
+  background:#e5f5ff;
+  border-color:#8ed1f1;
+  color:#0874aa;
 }
 
-/* =========================
-   MAP
-========================= */
+/* MAIN */
 
-.main {
-  flex: 1;
-  position: relative;
-  min-height: 0;
+.main{
+  position:relative;
+  height:calc(100vh - 70px);
 }
 
-#map {
-  width: 100%;
-  height: 100%;
+#map{
+  width:100%;
+  height:100%;
 }
 
-/* =========================
-   SIDE PANEL
-========================= */
+/* PANEL */
 
-.panel {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  width: 340px;
-  max-height: calc(100% - 30px);
-  background: rgba(255,255,255,.97);
-  border: 1px solid #d8e5eb;
-  border-radius: 16px;
-  overflow: hidden;
-  z-index: 1500;
-  box-shadow: 0 8px 30px rgba(30,70,90,.18);
+.panel{
+  position:absolute;
+  left:15px;
+  top:15px;
+  width:335px;
+  max-height:calc(100% - 30px);
+  background:rgba(255,255,255,.97);
+  border:1px solid #d9e6ed;
+  border-radius:16px;
+  box-shadow:0 8px 30px rgba(30,70,90,.18);
+  overflow:hidden;
+  z-index:1500;
 }
 
-.panelScroll {
-  overflow-y: auto;
-  max-height: calc(100vh - 110px);
+.panelScroll{
+  overflow:auto;
+  max-height:calc(100vh - 100px);
 }
 
-.section {
-  padding: 15px 17px;
-  border-bottom: 1px solid #e6eef2;
+.section{
+  padding:15px 17px;
+  border-bottom:1px solid #e5edf1;
 }
 
-.sectionTitle {
-  font-size: 15px;
-  font-weight: 800;
-  color: #244f66;
-  margin-bottom: 9px;
+.title{
+  font-size:15px;
+  font-weight:800;
+  color:#244f66;
+  margin-bottom:9px;
 }
 
-.status {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 12px;
-  color: #69818d;
+.status{
+  font-size:12px;
+  color:#607d8b;
+  display:flex;
+  gap:7px;
+  align-items:center;
 }
 
-.statusDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #35b86d;
+.dot{
+  width:8px;
+  height:8px;
+  background:#35b86d;
+  border-radius:50%;
 }
 
-.zoomText {
-  margin-top: 7px;
-  font-size: 12px;
-  color: #78909c;
+.zoom{
+  font-size:12px;
+  color:#78909c;
+  margin-top:7px;
 }
 
-/* =========================
-   LAYERS
-========================= */
-
-.layer {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin: 8px 0;
-  font-size: 13px;
-  color: #506873;
+.layer{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  color:#506873;
+  margin:8px 0;
 }
 
-.layer input {
-  width: 17px;
-  height: 17px;
-  accent-color: #269bd5;
+.layer input{
+  width:17px;
+  height:17px;
+  accent-color:#269bd5;
 }
 
-/* =========================
-   LOCATION
-========================= */
+/* LOCATION */
 
-.location {
-  display: none;
+.location{
+  display:none;
 }
 
-.locationType {
-  display: inline-block;
-  background: #e7f6ff;
-  color: #0876aa;
-  border-radius: 7px;
-  padding: 4px 8px;
-  font-size: 10px;
-  font-weight: 800;
-  margin-bottom: 8px;
+.locationType{
+  display:inline-block;
+  background:#e7f6ff;
+  color:#0876aa;
+  padding:4px 8px;
+  border-radius:7px;
+  font-size:10px;
+  font-weight:800;
+  margin-bottom:8px;
 }
 
-.locationEnglish {
-  font-size: 21px;
-  font-weight: 800;
-  line-height: 1.2;
-  color: #174f6a;
+.locationEN{
+  font-size:21px;
+  font-weight:800;
+  color:#174f6a;
+  line-height:1.2;
 }
 
-.locationThai {
-  font-size: 18px;
-  color: #607d8b;
-  margin-top: 3px;
+.locationTH{
+  font-size:18px;
+  color:#607d8b;
+  margin-top:3px;
 }
 
-.infoRows {
-  margin-top: 13px;
+.info{
+  margin-top:12px;
 }
 
-.infoRow {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 6px 0;
-  border-bottom: 1px dashed #e0e8ec;
-  font-size: 12px;
+.infoRow{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:6px 0;
+  border-bottom:1px dashed #e0e8ec;
+  font-size:12px;
 }
 
-.infoLabel {
-  color: #8a9ba3;
+.infoLabel{
+  color:#8a9ba3;
 }
 
-.infoValue {
-  text-align: right;
-  font-weight: 600;
-  color: #405d6a;
+.infoValue{
+  color:#405d6a;
+  font-weight:600;
+  text-align:right;
 }
 
-/* =========================
-   BUTTONS
-========================= */
+/* MAP BUTTONS */
 
-.mapButtons {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  z-index: 1400;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.mapButtons{
+  position:absolute;
+  top:15px;
+  right:15px;
+  z-index:1400;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
 }
 
-.mapButton {
-  width: 42px;
-  height: 42px;
-  border: 0;
-  border-radius: 10px;
-  background: white;
-  box-shadow: 0 3px 12px rgba(0,0,0,.16);
-  cursor: pointer;
-  font-size: 20px;
+.mapButton{
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:10px;
+  background:white;
+  box-shadow:0 3px 12px rgba(0,0,0,.16);
+  cursor:pointer;
+  font-size:20px;
 }
 
-.mapButton:hover {
-  background: #eef9ff;
+/* LEGEND */
+
+.legend{
+  position:absolute;
+  right:15px;
+  bottom:25px;
+  z-index:1400;
+  background:rgba(255,255,255,.95);
+  padding:11px 13px;
+  border-radius:11px;
+  box-shadow:0 4px 15px rgba(0,0,0,.14);
+  font-size:11px;
+  color:#526a75;
 }
 
-/* =========================
-   LEGEND
-========================= */
-
-.legend {
-  position: absolute;
-  right: 15px;
-  bottom: 25px;
-  z-index: 1400;
-  background: rgba(255,255,255,.95);
-  padding: 11px 13px;
-  border-radius: 11px;
-  box-shadow: 0 4px 15px rgba(0,0,0,.14);
-  font-size: 11px;
-  color: #526a75;
+.legendTitle{
+  font-weight:800;
+  margin-bottom:6px;
 }
 
-.legendTitle {
-  font-weight: 800;
-  margin-bottom: 6px;
+.legendRow{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin:4px 0;
 }
 
-.legendRow {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin: 4px 0;
+.line{
+  width:22px;
+  height:3px;
+  border-radius:3px;
 }
 
-.line {
-  width: 22px;
-  height: 3px;
-  border-radius: 3px;
+.provinceLine{
+  background:#168dc4;
 }
 
-.provinceLine {
-  background: #269bd5;
+.districtLine{
+  background:#719eaf;
 }
 
-.districtLine {
-  background: #719eaf;
+.subdistrictLine{
+  background:#b4c6ce;
 }
 
-.subdistrictLine {
-  background: #b4c6ce;
+/* LOADING */
+
+.loading{
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,.90);
+  z-index:6000;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
 }
 
-/* =========================
-   LOADING
-========================= */
-
-.loading {
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,.88);
-  z-index: 6000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
+.spinner{
+  width:42px;
+  height:42px;
+  border:4px solid #dceff7;
+  border-top-color:#269bd5;
+  border-radius:50%;
+  animation:spin .8s linear infinite;
 }
 
-.spinner {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 4px solid #dceff7;
-  border-top-color: #269bd5;
-  animation: spin .8s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
   }
 }
 
-.loadingText {
-  font-size: 15px;
-  font-weight: 700;
-  color: #496b7a;
+.loadingText{
+  font-size:15px;
+  font-weight:700;
+  color:#496b7a;
 }
 
-.loadingSmall {
-  font-size: 11px;
-  color: #78909c;
+.loadingError{
+  max-width:400px;
+  text-align:center;
+  font-size:12px;
+  line-height:1.6;
+  color:#78909c;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
-@media(max-width:800px) {
+@media(max-width:800px){
 
-  .header {
-    height: auto;
-    min-height: 70px;
-    flex-wrap: wrap;
-    padding: 9px;
+  .header{
+    height:auto;
+    min-height:70px;
+    flex-wrap:wrap;
+    padding:8px;
   }
 
-  .logo {
-    min-width: auto;
-    flex: 1;
+  .logo{
+    min-width:auto;
+    flex:1;
   }
 
-  .logoTitle {
-    font-size: 15px;
+  .logoTitle{
+    font-size:15px;
   }
 
-  .logoSubtitle {
-    display: none;
+  .logoSub{
+    display:none;
   }
 
-  .searchArea {
-    order: 3;
-    flex-basis: 100%;
-    max-width: none;
+  .searchArea{
+    order:3;
+    flex-basis:100%;
+    max-width:none;
   }
 
-  .languages {
-    display: none;
+  .languages{
+    display:none;
   }
 
-  .panel {
-    width: calc(100% - 30px);
-    max-height: 45%;
-    top: auto;
-    bottom: 15px;
+  .main{
+    height:calc(100vh - 125px);
   }
 
-  .panelScroll {
-    max-height: 45vh;
+  .panel{
+    width:calc(100% - 30px);
+    max-height:43%;
+    top:auto;
+    bottom:15px;
   }
 
-  .legend {
-    display: none;
+  .panelScroll{
+    max-height:43vh;
   }
 
-  .mapButtons {
-    top: 10px;
-    right: 10px;
+  .legend{
+    display:none;
   }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<div id="app">
-
-<header class="header">
+<div class="header">
 
   <div class="logo">
 
@@ -548,13 +513,15 @@ body {
     </div>
 
     <div>
+
       <div class="logoTitle">
         Thailand Geography
       </div>
 
-      <div class="logoSubtitle">
-        Geography Explorer • แผนที่ประเทศไทย
+      <div class="logoSub">
+        แผนที่ประเทศไทย • Geography Explorer
       </div>
+
     </div>
 
   </div>
@@ -562,25 +529,27 @@ body {
 
   <div class="searchArea">
 
-    <span class="searchIcon">🔍</span>
+    <span class="searchIcon">
+      🔍
+    </span>
 
     <input
-      id="searchInput"
-      class="searchInput"
+      id="search"
+      class="search"
       placeholder="Search Thailand / ค้นหาสถานที่..."
       autocomplete="off"
     >
 
     <button
-      id="clearButton"
-      class="clearButton"
+      id="clear"
+      class="clear"
     >
       ×
     </button>
 
     <div
-      id="searchResults"
-      class="searchResults"
+      id="results"
+      class="results"
     ></div>
 
   </div>
@@ -589,32 +558,32 @@ body {
   <div class="languages">
 
     <button
+      id="en"
       class="lang active"
-      id="enButton"
     >
       EN
     </button>
 
     <button
+      id="th"
       class="lang"
-      id="thButton"
     >
       ไทย
     </button>
 
     <button
+      id="both"
       class="lang"
-      id="bothButton"
     >
       EN + ไทย
     </button>
 
   </div>
 
-</header>
+</div>
 
 
-<main class="main">
+<div class="main">
 
   <div id="map"></div>
 
@@ -622,16 +591,16 @@ body {
   <div class="mapButtons">
 
     <button
+      id="home"
       class="mapButton"
-      id="homeButton"
       title="Thailand"
     >
       🇹🇭
     </button>
 
     <button
+      id="locate"
       class="mapButton"
-      id="locationButton"
       title="My location"
     >
       📍
@@ -640,48 +609,47 @@ body {
   </div>
 
 
-  <aside class="panel">
+  <div class="panel">
 
     <div class="panelScroll">
 
-      <section class="section">
+      <div class="section">
 
-        <div class="sectionTitle">
+        <div class="title">
           Map Information
         </div>
 
         <div class="status">
 
-          <span
-            class="statusDot"
-            id="statusDot"
-          ></span>
+          <span class="dot"></span>
 
-          <span id="statusText">
-            Starting map...
+          <span id="status">
+            Starting...
           </span>
 
         </div>
 
-        <div class="zoomText">
+        <div class="zoom">
           Zoom:
-          <strong id="zoomNumber">6</strong>
+          <strong id="zoom">
+            6
+          </strong>
         </div>
 
-      </section>
+      </div>
 
 
-      <section class="section">
+      <div class="section">
 
-        <div class="sectionTitle">
+        <div class="title">
           Map Layers
         </div>
 
         <label class="layer">
 
           <input
+            id="provinceLayer"
             type="checkbox"
-            id="provinceToggle"
             checked
           >
 
@@ -693,8 +661,8 @@ body {
         <label class="layer">
 
           <input
+            id="districtLayer"
             type="checkbox"
-            id="districtToggle"
             checked
           >
 
@@ -706,8 +674,8 @@ body {
         <label class="layer">
 
           <input
+            id="subdistrictLayer"
             type="checkbox"
-            id="subdistrictToggle"
             checked
           >
 
@@ -715,21 +683,24 @@ body {
 
         </label>
 
+
         <div style="
           margin-top:10px;
           font-size:11px;
-          color:#8a9ba3;
           line-height:1.5;
+          color:#8a9ba3;
         ">
-          Roads are supplied by OpenStreetMap and
-          appear automatically as you zoom in.
+
+          Roads are provided by
+          OpenStreetMap.
+
         </div>
 
-      </section>
+      </div>
 
 
-      <section
-        id="locationSection"
+      <div
+        id="location"
         class="section location"
       >
 
@@ -741,26 +712,26 @@ body {
         </div>
 
         <div
-          id="locationEnglish"
-          class="locationEnglish"
+          id="locationEN"
+          class="locationEN"
         ></div>
 
         <div
-          id="locationThai"
-          class="locationThai"
+          id="locationTH"
+          class="locationTH"
         ></div>
 
         <div
-          id="infoRows"
-          class="infoRows"
+          id="info"
+          class="info"
         ></div>
 
-      </section>
+      </div>
 
 
-      <section class="section">
+      <div class="section">
 
-        <div class="sectionTitle">
+        <div class="title">
           Zoom Guide
         </div>
 
@@ -770,26 +741,31 @@ body {
           color:#718894;
         ">
 
-          <strong>Zoom out</strong><br>
-          Thailand → Provinces
+          <strong>Country view</strong><br>
+          Thailand and provinces
 
           <br><br>
 
           <strong>Zoom in</strong><br>
-          Provinces → Districts → Subdistricts
+          Districts appear
 
           <br><br>
 
           <strong>Zoom further</strong><br>
-          Streets, roads and local places
+          Subdistricts appear
+
+          <br><br>
+
+          <strong>Zoom closer</strong><br>
+          Roads and local places
 
         </div>
 
-      </section>
+      </div>
 
     </div>
 
-  </aside>
+  </div>
 
 
   <div class="legend">
@@ -824,16 +800,14 @@ body {
     <div class="spinner"></div>
 
     <div class="loadingText">
-      Loading Thailand Geography...
+      Loading Thailand map...
     </div>
 
-    <div class="loadingSmall">
-      กำลังโหลดข้อมูลภูมิศาสตร์ประเทศไทย
+    <div class="loadingError">
+      กำลังโหลดแผนที่ประเทศไทย
     </div>
 
   </div>
-
-</main>
 
 </div>
 
@@ -845,102 +819,96 @@ body {
 
 <script>
 
-/* =====================================================
-   DATA SOURCES
-===================================================== */
+/* =========================================================
+   VERIFIED DATA SOURCES
+========================================================= */
 
-const DATA = {
+const PROVINCES =
+"https://raw.githubusercontent.com/chingchai/OpenGISData-Thailand/master/provinces.geojson";
 
-  province:
-    "https://raw.githubusercontent.com/knottx/opengisdata-thailand/master/provinces.geojson",
+const DISTRICTS =
+"https://raw.githubusercontent.com/chingchai/OpenGISData-Thailand/master/districts.geojson";
 
-  district:
-    "https://raw.githubusercontent.com/knottx/opengisdata-thailand/master/districts.geojson",
-
-  subdistrict:
-    "https://raw.githubusercontent.com/knottx/opengisdata-thailand/master/subdistricts.geojson"
-
-};
+const SUBDISTRICTS =
+"https://raw.githubusercontent.com/chingchai/OpenGISData-Thailand/master/subdistricts.geojson";
 
 
-/* =====================================================
+/* =========================================================
    MAP
-===================================================== */
+========================================================= */
 
-const map = L.map("map", {
+const map =
+L.map("map",{
 
-  center: [13.7367,100.5231],
+  center:[13.7367,100.5231],
 
-  zoom: 6,
+  zoom:6,
 
-  minZoom: 5,
+  minZoom:5,
 
-  maxZoom: 19,
-
-  zoomControl: true
+  maxZoom:19
 
 });
 
 
-/* OpenStreetMap */
-
 L.tileLayer(
+"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+{
 
-  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  maxZoom:19,
 
-  {
+  attribution:
+  '&copy; OpenStreetMap contributors'
 
-    maxZoom: 19,
-
-    attribution:
-      '&copy; OpenStreetMap contributors'
-
-  }
-
+}
 ).addTo(map);
 
 
-/* =====================================================
+/* =========================================================
    VARIABLES
-===================================================== */
+========================================================= */
 
-let provinceLayer = null;
-let districtLayer = null;
-let subdistrictLayer = null;
+let provinces=null;
 
-let provinceData = null;
-let districtData = null;
-let subdistrictData = null;
+let districts=null;
 
-let searchDatabase = [];
+let subdistricts=null;
+
+let provinceData=null;
+
+let districtData=null;
+
+let subdistrictData=null;
+
+let searchData=[];
 
 
-/* =====================================================
+/* =========================================================
    STATUS
-===================================================== */
+========================================================= */
 
-function status(text) {
+function setStatus(text){
 
   document.getElementById(
-    "statusText"
-  ).textContent = text;
+    "status"
+  ).textContent=text;
 
 }
 
 
-/* =====================================================
+/* =========================================================
    FETCH
-===================================================== */
+========================================================= */
 
-async function getJSON(url) {
+async function loadJSON(url){
 
-  const response =
-    await fetch(url);
+  const response=
+  await fetch(url);
 
-  if (!response.ok) {
+  if(!response.ok){
 
     throw new Error(
-      "Could not load " + url
+      "HTTP "+response.status
     );
 
   }
@@ -950,395 +918,532 @@ async function getJSON(url) {
 }
 
 
-/* =====================================================
-   LOAD PROVINCES
-===================================================== */
+/* =========================================================
+   PROVINCES
+========================================================= */
 
-async function loadProvinces() {
+async function loadProvinces(){
 
-  status(
-    "Loading 77 provinces..."
+  setStatus(
+    "Loading provinces..."
   );
 
-  provinceData =
-    await getJSON(
-      DATA.province
-    );
+  provinceData=
+  await loadJSON(
+    PROVINCES
+  );
 
 
-  provinceLayer =
-    L.geoJSON(
+  provinces=
+  L.geoJSON(
+    provinceData,
+    {
 
-      provinceData,
+      style:{
 
-      {
+        color:"#168dc4",
 
-        style: {
+        weight:2.3,
 
-          color: "#168dc4",
+        fillColor:"#9edcf3",
 
-          weight: 2.3,
+        fillOpacity:.13
 
-          fillColor: "#9edcf3",
+      },
 
-          fillOpacity: .14
+      onEachFeature:
+      function(feature,layer){
 
-        },
+        layer.on({
 
-        onEachFeature:
+          mouseover:function(e){
 
-          function(
-            feature,
-            layer
-          ) {
+            e.target.setStyle({
 
-            layer.on({
+              weight:3,
 
-              mouseover:
-                function(e) {
-
-                  e.target.setStyle({
-
-                    weight: 3,
-
-                    fillOpacity: .30
-
-                  });
-
-                },
-
-              mouseout:
-                function(e) {
-
-                  provinceLayer
-                    .resetStyle(
-                      e.target
-                    );
-
-                },
-
-              click:
-                function() {
-
-                  showLocation(
-                    feature,
-                    "province"
-                  );
-
-                }
+              fillOpacity:.30
 
             });
 
+          },
+
+          mouseout:function(e){
+
+            provinces.resetStyle(
+              e.target
+            );
+
+          },
+
+          click:function(){
+
+            showFeature(
+              feature,
+              "province"
+            );
+
           }
+
+        });
 
       }
 
-    ).addTo(map);
+    }
+  );
 
 
-  createProvinceSearchData();
+  provinces.addTo(map);
+
+
+  provinceData.features.forEach(
+    function(feature){
+
+      const p=
+      feature.properties||{};
+
+      searchData.push({
+
+        type:"province",
+
+        en:p.pro_en||"",
+
+        th:p.pro_th||"",
+
+        parentEN:"",
+
+        parentTH:"",
+
+        feature:feature
+
+      });
+
+    }
+  );
 
 }
 
 
-/* =====================================================
-   LOAD DISTRICTS
-===================================================== */
+/* =========================================================
+   DISTRICTS
+========================================================= */
 
-async function loadDistricts() {
+async function loadDistricts(){
 
-  status(
+  if(districts){
+    return;
+  }
+
+  setStatus(
     "Loading districts..."
   );
 
-  districtData =
-    await getJSON(
-      DATA.district
-    );
+  districtData=
+  await loadJSON(
+    DISTRICTS
+  );
 
 
-  districtLayer =
-    L.geoJSON(
+  districts=
+  L.geoJSON(
+    districtData,
+    {
 
-      districtData,
+      style:{
 
-      {
+        color:"#719eaf",
 
-        style: {
+        weight:1,
 
-          color: "#6e9bad",
+        fillColor:"#dcecf2",
 
-          weight: 1,
+        fillOpacity:.03
 
-          fillColor: "#d9ebf2",
+      },
 
-          fillOpacity: .03
+      onEachFeature:
+      function(feature,layer){
 
-        },
+        layer.on({
 
-        onEachFeature:
+          mouseover:function(e){
 
-          function(
-            feature,
-            layer
-          ) {
+            e.target.setStyle({
 
-            layer.on({
+              weight:2,
 
-              mouseover:
-                function(e) {
+              color:"#3f819b",
 
-                  e.target.setStyle({
-
-                    weight: 2,
-
-                    color: "#3e819b",
-
-                    fillOpacity: .16
-
-                  });
-
-                },
-
-              mouseout:
-                function(e) {
-
-                  districtLayer
-                    .resetStyle(
-                      e.target
-                    );
-
-                },
-
-              click:
-                function() {
-
-                  showLocation(
-                    feature,
-                    "district"
-                  );
-
-                }
+              fillOpacity:.15
 
             });
 
+          },
+
+          mouseout:function(e){
+
+            districts.resetStyle(
+              e.target
+            );
+
+          },
+
+          click:function(){
+
+            showFeature(
+              feature,
+              "district"
+            );
+
           }
+
+        });
 
       }
 
-    );
+    }
+  );
 
-  createDistrictSearchData();
+
+  districtData.features.forEach(
+    function(feature){
+
+      const p=
+      feature.properties||{};
+
+      searchData.push({
+
+        type:"district",
+
+        en:p.amp_en||"",
+
+        th:p.amp_th||"",
+
+        parentEN:p.pro_en||"",
+
+        parentTH:p.pro_th||"",
+
+        feature:feature
+
+      });
+
+    }
+  );
+
+
+  if(
+    document.getElementById(
+      "districtLayer"
+    ).checked
+  ){
+
+    districts.addTo(map);
+
+  }
 
 }
 
 
-/* =====================================================
-   LOAD SUBDISTRICTS
-===================================================== */
+/* =========================================================
+   SUBDISTRICTS
+========================================================= */
 
-async function loadSubdistricts() {
+async function loadSubdistricts(){
 
-  status(
+  if(subdistricts){
+    return;
+  }
+
+  setStatus(
     "Loading subdistricts..."
   );
 
-  subdistrictData =
-    await getJSON(
-      DATA.subdistrict
-    );
+
+  /*
+    This file is large.
+    It is intentionally loaded only
+    after the user zooms in.
+  */
+
+  subdistrictData=
+  await loadJSON(
+    SUBDISTRICTS
+  );
 
 
-  subdistrictLayer =
-    L.geoJSON(
+  subdistricts=
+  L.geoJSON(
+    subdistrictData,
+    {
 
-      subdistrictData,
+      style:{
 
-      {
+        color:"#b5c7ce",
 
-        style: {
+        weight:.6,
 
-          color: "#b2c5cc",
+        fillColor:"#edf5f7",
 
-          weight: .55,
+        fillOpacity:.02
 
-          fillColor: "#eef5f7",
+      },
 
-          fillOpacity: .02
+      onEachFeature:
+      function(feature,layer){
 
-        },
+        layer.on({
 
-        onEachFeature:
+          mouseover:function(e){
 
-          function(
-            feature,
-            layer
-          ) {
+            e.target.setStyle({
 
-            layer.on({
+              weight:1.5,
 
-              mouseover:
-                function(e) {
+              color:"#6e9aaa",
 
-                  e.target.setStyle({
-
-                    weight: 1.5,
-
-                    color: "#6e9aaa",
-
-                    fillOpacity: .12
-
-                  });
-
-                },
-
-              mouseout:
-                function(e) {
-
-                  subdistrictLayer
-                    .resetStyle(
-                      e.target
-                    );
-
-                },
-
-              click:
-                function() {
-
-                  showLocation(
-                    feature,
-                    "subdistrict"
-                  );
-
-                }
+              fillOpacity:.13
 
             });
 
+          },
+
+          mouseout:function(e){
+
+            subdistricts.resetStyle(
+              e.target
+            );
+
+          },
+
+          click:function(){
+
+            showFeature(
+              feature,
+              "subdistrict"
+            );
+
           }
+
+        });
 
       }
 
-    );
-
-  createSubdistrictSearchData();
-
-}
-
-
-/* =====================================================
-   SEARCH DATA
-===================================================== */
-
-function createProvinceSearchData() {
-
-  provinceData.features.forEach(
-    feature => {
-
-      const p =
-        feature.properties || {};
-
-      searchDatabase.push({
-
-        type: "province",
-
-        en:
-          p.pro_en || "",
-
-        th:
-          p.pro_th || "",
-
-        parentEN: "",
-
-        parentTH: "",
-
-        feature
-
-      });
-
     }
   );
 
-}
 
-
-function createDistrictSearchData() {
-
-  districtData.features.forEach(
-    feature => {
-
-      const p =
-        feature.properties || {};
-
-      searchDatabase.push({
-
-        type: "district",
-
-        en:
-          p.amp_en || "",
-
-        th:
-          p.amp_th || "",
-
-        parentEN:
-          p.pro_en || "",
-
-        parentTH:
-          p.pro_th || "",
-
-        feature
-
-      });
-
-    }
-  );
-
-}
-
-
-function createSubdistrictSearchData() {
+  /*
+    Search data
+  */
 
   subdistrictData.features.forEach(
-    feature => {
+    function(feature){
 
-      const p =
-        feature.properties || {};
+      const p=
+      feature.properties||{};
 
-      searchDatabase.push({
+      searchData.push({
 
-        type: "subdistrict",
+        type:"subdistrict",
 
-        en:
-          p.tam_en || "",
+        en:p.tam_en||"",
 
-        th:
-          p.tam_th || "",
+        th:p.tam_th||"",
 
-        parentEN:
-          p.amp_en || "",
+        parentEN:p.amp_en||"",
 
-        parentTH:
-          p.amp_th || "",
+        parentTH:p.amp_th||"",
 
-        feature
+        feature:feature
 
       });
 
     }
   );
 
+
+  if(
+    document.getElementById(
+      "subdistrictLayer"
+    ).checked
+  ){
+
+    subdistricts.addTo(map);
+
+  }
+
 }
 
 
-/* =====================================================
-   SHOW / HIDE LAYERS
-===================================================== */
+/* =========================================================
+   ZOOM
+========================================================= */
 
-function show(layer) {
+let districtLoading=false;
 
-  if (
+let subdistrictLoading=false;
+
+
+map.on(
+  "zoomend",
+  async function(){
+
+    const z=
+    map.getZoom();
+
+
+    document.getElementById(
+      "zoom"
+    ).textContent=z;
+
+
+    /*
+      Province view
+    */
+
+    if(z<8){
+
+      if(provinces){
+        showLayer(provinces);
+      }
+
+      if(districts){
+        hideLayer(districts);
+      }
+
+      if(subdistricts){
+        hideLayer(subdistricts);
+      }
+
+    }
+
+
+    /*
+      District view
+    */
+
+    else if(z<11){
+
+      if(provinces){
+        showLayer(provinces);
+      }
+
+      if(!districts && !districtLoading){
+
+        districtLoading=true;
+
+        try{
+
+          await loadDistricts();
+
+        }
+        catch(error){
+
+          showDataError(
+            error
+          );
+
+        }
+
+        districtLoading=false;
+
+      }
+
+      if(districts){
+        showLayer(districts);
+      }
+
+      if(subdistricts){
+        hideLayer(subdistricts);
+      }
+
+    }
+
+
+    /*
+      Subdistrict view
+    */
+
+    else{
+
+      if(provinces){
+        showLayer(provinces);
+      }
+
+      if(!districts && !districtLoading){
+
+        districtLoading=true;
+
+        try{
+
+          await loadDistricts();
+
+        }
+        catch(error){
+
+          showDataError(
+            error
+          );
+
+        }
+
+        districtLoading=false;
+
+      }
+
+
+      if(districts){
+        showLayer(districts);
+      }
+
+
+      if(!subdistricts &&
+         !subdistrictLoading){
+
+        subdistrictLoading=true;
+
+        try{
+
+          await loadSubdistricts();
+
+        }
+        catch(error){
+
+          showDataError(
+            error
+          );
+
+        }
+
+        subdistrictLoading=false;
+
+      }
+
+
+      if(subdistricts){
+
+        showLayer(
+          subdistricts
+        );
+
+      }
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   LAYER HELPERS
+========================================================= */
+
+function showLayer(layer){
+
+  if(
     layer &&
     !map.hasLayer(layer)
-  ) {
+  ){
 
     layer.addTo(map);
 
@@ -1347,12 +1452,12 @@ function show(layer) {
 }
 
 
-function hide(layer) {
+function hideLayer(layer){
 
-  if (
+  if(
     layer &&
     map.hasLayer(layer)
-  ) {
+  ){
 
     map.removeLayer(layer);
 
@@ -1361,226 +1466,109 @@ function hide(layer) {
 }
 
 
-/* =====================================================
-   ZOOM LOGIC
-===================================================== */
+/* =========================================================
+   SHOW FEATURE
+========================================================= */
 
-function updateLayers() {
-
-  const z =
-    map.getZoom();
-
-
-  document.getElementById(
-    "zoomNumber"
-  ).textContent =
-    z;
-
-
-  /*
-    Z5-Z7
-    Provinces
-
-    Z8-Z10
-    Provinces + Districts
-
-    Z11+
-    Provinces + Districts + Subdistricts
-  */
-
-
-  if (z < 8) {
-
-    show(provinceLayer);
-
-    hide(districtLayer);
-
-    hide(subdistrictLayer);
-
-  }
-
-  else if (z < 11) {
-
-    show(provinceLayer);
-
-    show(districtLayer);
-
-    hide(subdistrictLayer);
-
-  }
-
-  else {
-
-    show(provinceLayer);
-
-    show(districtLayer);
-
-    show(subdistrictLayer);
-
-  }
-
-
-  if (
-    !document.getElementById(
-      "provinceToggle"
-    ).checked
-  ) {
-
-    hide(provinceLayer);
-
-  }
-
-
-  if (
-    !document.getElementById(
-      "districtToggle"
-    ).checked
-  ) {
-
-    hide(districtLayer);
-
-  }
-
-
-  if (
-    !document.getElementById(
-      "subdistrictToggle"
-    ).checked
-  ) {
-
-    hide(subdistrictLayer);
-
-  }
-
-}
-
-
-map.on(
-  "zoomend",
-  updateLayers
-);
-
-
-/* =====================================================
-   LOCATION INFORMATION
-===================================================== */
-
-function showLocation(
+function showFeature(
   feature,
   type
-) {
+){
 
-  const p =
-    feature.properties || {};
-
-
-  let en = "";
-  let th = "";
-
-  let parentEN = "";
-  let parentTH = "";
-
-  let code = "";
+  const p=
+  feature.properties||{};
 
 
-  if (
-    type === "province"
-  ) {
+  let en="";
 
-    en =
-      p.pro_en || "";
+  let th="";
 
-    th =
-      p.pro_th || "";
+  let parentEN="";
 
-    code =
-      p.pro_code || "";
+  let parentTH="";
+
+  let code="";
+
+
+  if(type==="province"){
+
+    en=p.pro_en||"";
+
+    th=p.pro_th||"";
+
+    code=p.pro_code||"";
 
   }
 
 
-  if (
-    type === "district"
-  ) {
+  if(type==="district"){
 
-    en =
-      p.amp_en || "";
+    en=p.amp_en||"";
 
-    th =
-      p.amp_th || "";
+    th=p.amp_th||"";
 
-    parentEN =
-      p.pro_en || "";
+    parentEN=p.pro_en||"";
 
-    parentTH =
-      p.pro_th || "";
+    parentTH=p.pro_th||"";
 
-    code =
-      p.amp_code || "";
+    code=p.amp_code||"";
 
   }
 
 
-  if (
-    type === "subdistrict"
-  ) {
+  if(type==="subdistrict"){
 
-    en =
-      p.tam_en || "";
+    en=p.tam_en||"";
 
-    th =
-      p.tam_th || "";
+    th=p.tam_th||"";
 
-    parentEN =
-      p.amp_en || "";
+    parentEN=p.amp_en||"";
 
-    parentTH =
-      p.amp_th || "";
+    parentTH=p.amp_th||"";
 
-    code =
-      p.tam_code || "";
+    code=p.tam_code||"";
 
   }
 
 
   document.getElementById(
-    "locationSection"
-  ).style.display =
-    "block";
-
-
-  let typeText =
-    type === "province"
-      ? "PROVINCE / จังหวัด"
-      : type === "district"
-        ? "DISTRICT / อำเภอ"
-        : "SUBDISTRICT / ตำบล";
+    "location"
+  ).style.display="block";
 
 
   document.getElementById(
     "locationType"
-  ).textContent =
-    typeText;
+  ).textContent=
+
+    type==="province"
+    ?"PROVINCE / จังหวัด"
+
+    :
+
+    type==="district"
+    ?"DISTRICT / อำเภอ"
+
+    :
+
+    "SUBDISTRICT / ตำบล";
 
 
   document.getElementById(
-    "locationEnglish"
-  ).textContent =
-    en;
+    "locationEN"
+  ).textContent=en;
 
 
   document.getElementById(
-    "locationThai"
-  ).textContent =
-    th;
+    "locationTH"
+  ).textContent=th;
 
 
-  let html = "";
+  let html="";
 
 
-  if (code) {
+  if(code){
 
-    html += `
+    html+=`
 
       <div class="infoRow">
 
@@ -1599,9 +1587,9 @@ function showLocation(
   }
 
 
-  if (parentEN) {
+  if(parentEN){
 
-    html += `
+    html+=`
 
       <div class="infoRow">
 
@@ -1630,9 +1618,9 @@ function showLocation(
   }
 
 
-  if (p.postalCode) {
+  if(p.postalCode){
 
-    html += `
+    html+=`
 
       <div class="infoRow">
 
@@ -1654,35 +1642,38 @@ function showLocation(
 
 
   document.getElementById(
-    "infoRows"
-  ).innerHTML =
-    html;
+    "info"
+  ).innerHTML=html;
 
 
-  /* Zoom to boundary */
+  /*
+    Zoom to selected area
+  */
 
-  try {
+  try{
 
-    const geo =
-      L.geoJSON(feature);
+    const layer=
+    L.geoJSON(feature);
 
-    const bounds =
-      geo.getBounds();
+    const bounds=
+    layer.getBounds();
 
-    if (bounds.isValid()) {
+    if(bounds.isValid()){
 
       map.fitBounds(
         bounds,
         {
 
-          padding: [60,60],
+          padding:[50,50],
 
           maxZoom:
-            type === "province"
-              ? 9
-              : type === "district"
-                ? 12
-                : 15
+            type==="province"
+            ?9
+            :
+            type==="district"
+            ?12
+            :
+            15
 
         }
       );
@@ -1690,51 +1681,48 @@ function showLocation(
     }
 
   }
-  catch(error) {
+  catch(e){
 
-    console.log(error);
+    console.log(e);
 
   }
 
 }
 
 
-/* =====================================================
+/* =========================================================
    SEARCH
-===================================================== */
+========================================================= */
 
-const searchInput =
-  document.getElementById(
-    "searchInput"
-  );
-
-const searchResults =
-  document.getElementById(
-    "searchResults"
-  );
+const search=
+document.getElementById(
+  "search"
+);
 
 
-searchInput.addEventListener(
+search.addEventListener(
   "input",
-  function() {
+  function(){
 
-    const q =
-      searchInput.value
-        .trim()
-        .toLowerCase();
+    const q=
+    search.value
+      .trim()
+      .toLowerCase();
 
 
     document.getElementById(
-      "clearButton"
-    ).style.display =
+      "clear"
+    ).style.display=
       q
-        ? "block"
-        : "none";
+      ?"block"
+      :"none";
 
 
-    if (!q) {
+    if(!q){
 
-      searchResults.style.display =
+      document.getElementById(
+        "results"
+      ).style.display=
         "none";
 
       return;
@@ -1742,67 +1730,72 @@ searchInput.addEventListener(
     }
 
 
-    const results =
-      searchDatabase
-        .filter(
-          item => {
+    const matches=
+    searchData
+      .filter(
+        function(item){
 
-            return (
+          return(
 
-              item.en
-                .toLowerCase()
-                .includes(q)
+            item.en
+              .toLowerCase()
+              .includes(q)
 
-              ||
+            ||
 
-              item.th
-                .toLowerCase()
-                .includes(q)
+            item.th
+              .toLowerCase()
+              .includes(q)
 
-              ||
+            ||
 
-              item.parentEN
-                .toLowerCase()
-                .includes(q)
+            item.parentEN
+              .toLowerCase()
+              .includes(q)
 
-              ||
+            ||
 
-              item.parentTH
-                .toLowerCase()
-                .includes(q)
+            item.parentTH
+              .toLowerCase()
+              .includes(q)
 
-            );
+          );
 
-          }
-        )
-        .slice(0,30);
+        }
+      )
+      .slice(0,30);
 
 
     renderResults(
-      results
+      matches
     );
 
   }
 );
 
 
-/* =====================================================
-   RENDER SEARCH
-===================================================== */
+/* =========================================================
+   SEARCH RESULTS
+========================================================= */
 
 function renderResults(
-  results
-) {
+  matches
+){
 
-  if (!results.length) {
+  const box=
+  document.getElementById(
+    "results"
+  );
 
-    searchResults.innerHTML = `
+
+  if(!matches.length){
+
+    box.innerHTML=`
 
       <div style="
         padding:20px;
         text-align:center;
         color:#78909c;
-        font-size:13px;
       ">
 
         No locations found<br>
@@ -1813,7 +1806,7 @@ function renderResults(
 
     `;
 
-    searchResults.style.display =
+    box.style.display=
       "block";
 
     return;
@@ -1821,114 +1814,130 @@ function renderResults(
   }
 
 
-  searchResults.innerHTML =
-    results
-      .map(
-        (item,index) => {
+  box.innerHTML=
+  matches.map(
+    function(item,index){
 
-          const type =
-            item.type === "province"
-              ? "PROVINCE"
-              : item.type === "district"
-                ? "DISTRICT"
-                : "SUBDISTRICT";
+      const type=
+        item.type==="province"
+        ?"PROVINCE / จังหวัด"
+
+        :
+
+        item.type==="district"
+        ?"DISTRICT / อำเภอ"
+
+        :
+
+        "SUBDISTRICT / ตำบล";
 
 
-          return `
+      return`
 
-            <div
-              class="result"
-              data-index="${index}"
-            >
+        <div
+          class="result"
+          data-index="${index}"
+        >
 
-              <div class="resultType">
-                ${type}
-              </div>
+          <div class="resultType">
+            ${type}
+          </div>
 
-              <div class="resultEnglish">
-                ${escapeHTML(
-                  item.en
-                )}
-              </div>
+          <div class="resultEN">
+            ${escapeHTML(
+              item.en
+            )}
+          </div>
 
-              <div class="resultThai">
-                ${escapeHTML(
-                  item.th
-                )}
-              </div>
+          <div class="resultTH">
+            ${escapeHTML(
+              item.th
+            )}
+          </div>
+
+          ${
+            item.parentEN
+            ?
+
+            `
+            <div class="resultParent">
+
+              ${escapeHTML(
+                item.parentEN
+              )}
 
               ${
-                item.parentEN
+                item.parentTH
                 ?
-                `
-                <div class="resultParent">
-                  ${escapeHTML(
-                    item.parentEN
-                  )}
-                  ${
-                    item.parentTH
-                    ?
-                    " • " +
-                    escapeHTML(
-                      item.parentTH
-                    )
-                    :
-                    ""
-                  }
-                </div>
-                `
+                " • "+
+                escapeHTML(
+                  item.parentTH
+                )
                 :
                 ""
               }
 
             </div>
+            `
 
-          `;
+            :
 
-        }
-      )
-      .join("");
+            ""
+          }
+
+        </div>
+
+      `;
+
+    }
+  ).join("");
 
 
-  searchResults.style.display =
+  box.style.display=
     "block";
 
 
-  document
+  box
     .querySelectorAll(
       ".result"
     )
     .forEach(
-      element => {
+      function(element){
 
-        element.addEventListener(
-          "click",
-          function() {
+        element.onclick=
+        async function(){
 
-            const index =
+          const item=
+            matches[
               Number(
                 element.dataset.index
-              );
-
-            const item =
-              results[index];
+              )
+            ];
 
 
-            searchInput.value =
-              item.en;
+          /*
+            If a district is selected
+            before district data has
+            loaded, it is already loaded
+            because the search result
+            exists.
+          */
 
 
-            searchResults.style.display =
-              "none";
+          showFeature(
+            item.feature,
+            item.type
+          );
 
 
-            showLocation(
-              item.feature,
-              item.type
-            );
+          search.value=
+            item.en;
 
-          }
-        );
+
+          box.style.display=
+            "none";
+
+        };
 
       }
     );
@@ -1936,213 +1945,258 @@ function renderResults(
 }
 
 
-/* =====================================================
+/* =========================================================
    CLEAR SEARCH
-===================================================== */
+========================================================= */
 
 document.getElementById(
-  "clearButton"
-).addEventListener(
-  "click",
-  function() {
+  "clear"
+).onclick=
+function(){
 
-    searchInput.value =
-      "";
+  search.value="";
 
-    searchResults.style.display =
-      "none";
+  document.getElementById(
+    "results"
+  ).style.display=
+    "none";
 
-    this.style.display =
-      "none";
+  this.style.display=
+    "none";
 
-  }
-);
+};
 
 
-/* =====================================================
+/* =========================================================
    HOME
-===================================================== */
+========================================================= */
 
 document.getElementById(
-  "homeButton"
-).addEventListener(
-  "click",
-  function() {
+  "home"
+).onclick=
+function(){
 
-    map.setView(
-      [13.7367,100.5231],
-      6
+  map.setView(
+    [13.7367,100.5231],
+    6
+  );
+
+
+  document.getElementById(
+    "location"
+  ).style.display=
+    "none";
+
+
+  search.value="";
+
+};
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+document.getElementById(
+  "locate"
+).onclick=
+function(){
+
+  if(
+    !navigator.geolocation
+  ){
+
+    alert(
+      "Location is not supported by this browser."
     );
 
-    document.getElementById(
-      "locationSection"
-    ).style.display =
-      "none";
-
-    searchInput.value =
-      "";
-
-    searchResults.style.display =
-      "none";
-
-    document.getElementById(
-      "clearButton"
-    ).style.display =
-      "none";
+    return;
 
   }
-);
 
 
-/* =====================================================
-   LOCATION
-===================================================== */
+  navigator.geolocation.getCurrentPosition(
 
-document.getElementById(
-  "locationButton"
-).addEventListener(
-  "click",
-  function() {
+    function(position){
 
-    if (
-      !navigator.geolocation
-    ) {
+      const lat=
+        position.coords.latitude;
 
-      alert(
-        "Geolocation is not supported."
+      const lng=
+        position.coords.longitude;
+
+
+      map.setView(
+        [lat,lng],
+        16
       );
 
-      return;
+
+      L.marker(
+        [lat,lng]
+      )
+      .addTo(map)
+      .bindPopup(
+        "Your location"
+      )
+      .openPopup();
+
+    },
+
+    function(){
+
+      alert(
+        "Unable to access your location."
+      );
 
     }
 
+  );
 
-    navigator.geolocation.getCurrentPosition(
-
-      function(position) {
-
-        const lat =
-          position.coords.latitude;
-
-        const lng =
-          position.coords.longitude;
+};
 
 
-        map.setView(
-          [lat,lng],
-          16
-        );
+/* =========================================================
+   LAYER CHECKBOXES
+========================================================= */
 
+document.getElementById(
+  "provinceLayer"
+).onchange=
+function(){
 
-        L.marker(
-          [lat,lng]
-        )
-        .addTo(map)
-        .bindPopup(
-          "Your location"
-        )
-        .openPopup();
+  if(this.checked){
 
-      },
-
-      function() {
-
-        alert(
-          "Unable to access your location."
-        );
-
-      }
-
+    showLayer(
+      provinces
     );
 
   }
-);
+  else{
 
+    hideLayer(
+      provinces
+    );
 
-/* =====================================================
-   LAYER CHECKBOXES
-===================================================== */
+  }
 
-document.getElementById(
-  "provinceToggle"
-).addEventListener(
-  "change",
-  updateLayers
-);
+};
 
 
 document.getElementById(
-  "districtToggle"
-).addEventListener(
-  "change",
-  updateLayers
-);
+  "districtLayer"
+).onchange=
+function(){
+
+  if(this.checked){
+
+    if(districts){
+
+      showLayer(
+        districts
+      );
+
+    }
+
+  }
+  else{
+
+    hideLayer(
+      districts
+    );
+
+  }
+
+};
 
 
 document.getElementById(
-  "subdistrictToggle"
-).addEventListener(
-  "change",
-  updateLayers
-);
+  "subdistrictLayer"
+).onchange=
+function(){
+
+  if(this.checked){
+
+    if(subdistricts){
+
+      showLayer(
+        subdistricts
+      );
+
+    }
+
+  }
+  else{
+
+    hideLayer(
+      subdistricts
+    );
+
+  }
+
+};
 
 
-/* =====================================================
+/* =========================================================
    LANGUAGE BUTTONS
-===================================================== */
+========================================================= */
 
 document.getElementById(
-  "enButton"
-).onclick =
-function() {
+  "en"
+).onclick=
+function(){
 
-  setLanguage("en");
+  setLanguage(
+    "en"
+  );
 
 };
 
 
 document.getElementById(
-  "thButton"
-).onclick =
-function() {
+  "th"
+).onclick=
+function(){
 
-  setLanguage("th");
+  setLanguage(
+    "th"
+  );
 
 };
 
 
 document.getElementById(
-  "bothButton"
-).onclick =
-function() {
+  "both"
+).onclick=
+function(){
 
-  setLanguage("both");
+  setLanguage(
+    "both"
+  );
 
 };
 
 
 function setLanguage(
   language
-) {
+){
 
   document
     .querySelectorAll(
       ".lang"
     )
     .forEach(
-      button =>
-        button.classList.remove(
+      b =>
+        b.classList.remove(
           "active"
         )
     );
 
 
-  if (
-    language === "en"
-  ) {
+  if(language==="en"){
 
     document.getElementById(
-      "enButton"
+      "en"
     ).classList.add(
       "active"
     );
@@ -2150,12 +2204,10 @@ function setLanguage(
   }
 
 
-  if (
-    language === "th"
-  ) {
+  if(language==="th"){
 
     document.getElementById(
-      "thButton"
+      "th"
     ).classList.add(
       "active"
     );
@@ -2163,12 +2215,10 @@ function setLanguage(
   }
 
 
-  if (
-    language === "both"
-  ) {
+  if(language==="both"){
 
     document.getElementById(
-      "bothButton"
+      "both"
     ).classList.add(
       "active"
     );
@@ -2178,13 +2228,33 @@ function setLanguage(
 }
 
 
-/* =====================================================
-   ESCAPE HTML
-===================================================== */
+/* =========================================================
+   ERROR
+========================================================= */
+
+function showDataError(
+  error
+){
+
+  console.error(
+    error
+  );
+
+
+  setStatus(
+    "Could not load geographic data"
+  );
+
+}
+
+
+/* =========================================================
+   ESCAPE
+========================================================= */
 
 function escapeHTML(
   value
-) {
+){
 
   return String(
     value ?? ""
@@ -2213,51 +2283,39 @@ function escapeHTML(
 }
 
 
-/* =====================================================
-   START LOADING
-===================================================== */
+/* =========================================================
+   START
+========================================================= */
 
-async function start() {
+async function start(){
 
-  try {
-
-    status(
-      "Loading provinces..."
-    );
+  try{
 
     await loadProvinces();
 
 
-    status(
-      "Loading districts..."
-    );
-
-    await loadDistricts();
-
-
-    status(
-      "Loading subdistricts..."
-    );
-
-    await loadSubdistricts();
-
-
-    status(
-      "Thailand geography ready"
+    setStatus(
+      "Thailand map ready"
     );
 
 
     document.getElementById(
       "loading"
-    ).style.display =
+    ).style.display=
       "none";
 
 
-    updateLayers();
+    /*
+      Start with provinces.
+      Districts and subdistricts
+      are deliberately NOT downloaded
+      yet.
+    */
+
+    updateInitialLayers();
 
   }
-
-  catch(error) {
+  catch(error){
 
     console.error(
       error
@@ -2266,10 +2324,10 @@ async function start() {
 
     document.getElementById(
       "loading"
-    ).innerHTML = `
+    ).innerHTML=`
 
       <div style="
-        font-size:42px;
+        font-size:45px;
       ">
         ⚠️
       </div>
@@ -2279,31 +2337,41 @@ async function start() {
         font-weight:800;
         color:#b33d3d;
       ">
-        Map data could not load
+        Map failed to load
       </div>
 
-      <div style="
-        max-width:350px;
-        text-align:center;
-        line-height:1.6;
-        font-size:12px;
-        color:#718894;
-      ">
-
-        Please make sure GitHub Pages has
-        internet access and refresh the page.
-
-        <br><br>
-
-        Error:
+      <div class="loadingError">
 
         ${escapeHTML(
           error.message
         )}
 
+        <br><br>
+
+        Please refresh the page.
+
       </div>
 
     `;
+
+  }
+
+}
+
+
+/* =========================================================
+   INITIAL LAYERS
+========================================================= */
+
+function updateInitialLayers(){
+
+  if(
+    map.getZoom()<8
+  ){
+
+    showLayer(
+      provinces
+    );
 
   }
 
