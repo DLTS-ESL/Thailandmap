@@ -6,12 +6,9 @@
 
 <title>Thailand Geography Explorer</title>
 
-<!-- Leaflet -->
 <link
   rel="stylesheet"
   href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  integrity="sha256-p4NxAoJBhIINfQ3FJ1zj4pQqF4Xw8JQp8lJv+f8X5gE="
-  crossorigin=""
 />
 
 <style>
@@ -25,12 +22,8 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
-  font-family:
-    "Noto Sans Thai",
-    "Noto Sans",
-    Arial,
-    sans-serif;
-  background: #eef6fb;
+  font-family: Arial, "Noto Sans Thai", sans-serif;
+  background: #eef7fb;
 }
 
 #app {
@@ -46,131 +39,182 @@ body {
 
 .header {
   height: 72px;
-  background: #ffffff;
-  border-bottom: 1px solid #dbe7ef;
+  background: white;
+  border-bottom: 1px solid #dce8ee;
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 10px 18px;
-  z-index: 2000;
+  gap: 15px;
+  padding: 10px 16px;
   position: relative;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  z-index: 3000;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
 }
 
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
-  min-width: 240px;
+  min-width: 235px;
 }
 
-.logo-icon {
+.logoIcon {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: #e7f5ff;
+  background: #e7f6ff;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 25px;
 }
 
-.logo-text {
-  line-height: 1.05;
-}
-
-.logo-title {
+.logoTitle {
   font-size: 18px;
   font-weight: 800;
-  color: #175b83;
+  color: #185d82;
 }
 
-.logo-subtitle {
+.logoSubtitle {
   font-size: 11px;
-  color: #78909c;
-  margin-top: 4px;
+  color: #7a919c;
+  margin-top: 3px;
 }
 
-/* SEARCH */
+/* =========================
+   SEARCH
+========================= */
 
-.search-area {
+.searchArea {
   flex: 1;
   max-width: 650px;
   position: relative;
 }
 
-.search-box {
+.searchInput {
   width: 100%;
   height: 46px;
-  border: 1px solid #cbdce7;
+  border: 1px solid #cbdde7;
   border-radius: 13px;
-  background: #f8fcff;
-  padding: 0 48px 0 45px;
-  font-size: 15px;
+  background: #f8fcfe;
+  padding: 0 42px 0 44px;
   outline: none;
-  transition: 0.2s;
+  font-size: 15px;
 }
 
-.search-box:focus {
-  border-color: #239bd3;
-  background: #fff;
-  box-shadow: 0 0 0 3px rgba(35,155,211,0.12);
+.searchInput:focus {
+  border-color: #269bd5;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(38,155,213,.12);
 }
 
-.search-icon {
+.searchIcon {
   position: absolute;
-  left: 15px;
-  top: 13px;
-  font-size: 19px;
-  color: #6d8795;
-  pointer-events: none;
+  left: 14px;
+  top: 12px;
+  font-size: 20px;
+  color: #718995;
 }
 
-.clear-search {
+.clearButton {
   position: absolute;
-  right: 13px;
+  right: 10px;
   top: 9px;
   width: 28px;
   height: 28px;
   border: 0;
-  border-radius: 50%;
   background: transparent;
-  color: #78909c;
-  font-size: 18px;
+  border-radius: 50%;
   cursor: pointer;
+  font-size: 20px;
+  color: #78909c;
   display: none;
 }
 
-.clear-search:hover {
-  background: #e9f2f7;
+.clearButton:hover {
+  background: #eaf3f7;
 }
 
-/* LANGUAGE */
+/* SEARCH RESULTS */
 
-.lang-buttons {
+.searchResults {
+  position: absolute;
+  top: 51px;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #d6e3e9;
+  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+  max-height: 430px;
+  overflow-y: auto;
+  display: none;
+  z-index: 5000;
+}
+
+.result {
+  padding: 11px 14px;
+  border-bottom: 1px solid #edf2f5;
+  cursor: pointer;
+}
+
+.result:hover {
+  background: #eff9fe;
+}
+
+.resultType {
+  font-size: 10px;
+  font-weight: 800;
+  color: #269bd5;
+  text-transform: uppercase;
+}
+
+.resultEnglish {
+  font-size: 14px;
+  font-weight: 700;
+  color: #315c70;
+  margin-top: 3px;
+}
+
+.resultThai {
+  font-size: 13px;
+  color: #718894;
+  margin-top: 2px;
+}
+
+.resultParent {
+  font-size: 10px;
+  color: #9aaab2;
+  margin-top: 3px;
+}
+
+/* =========================
+   LANGUAGE
+========================= */
+
+.languages {
   display: flex;
-  gap: 5px;
+  gap: 4px;
 }
 
-.lang-button {
-  border: 1px solid #d4e1e8;
+.lang {
+  border: 1px solid #d3e0e7;
   background: white;
   border-radius: 8px;
-  padding: 7px 10px;
-  cursor: pointer;
+  padding: 7px 9px;
+  font-size: 11px;
   font-weight: 700;
-  font-size: 12px;
-  color: #58717e;
+  cursor: pointer;
+  color: #607d8b;
 }
 
-.lang-button.active {
+.lang.active {
   background: #e5f5ff;
   color: #0874aa;
   border-color: #8ed1f1;
 }
 
 /* =========================
-   MAIN
+   MAP
 ========================= */
 
 .main {
@@ -192,84 +236,82 @@ body {
   position: absolute;
   top: 15px;
   left: 15px;
-  width: 345px;
+  width: 340px;
   max-height: calc(100% - 30px);
-  background: rgba(255,255,255,0.97);
-  border: 1px solid #d9e6ed;
+  background: rgba(255,255,255,.97);
+  border: 1px solid #d8e5eb;
   border-radius: 16px;
-  z-index: 1200;
-  box-shadow: 0 8px 30px rgba(35,75,95,0.18);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  z-index: 1500;
+  box-shadow: 0 8px 30px rgba(30,70,90,.18);
 }
 
-.panel-scroll {
+.panelScroll {
   overflow-y: auto;
-  padding-bottom: 12px;
+  max-height: calc(100vh - 110px);
 }
 
-.panel-section {
+.section {
   padding: 15px 17px;
-  border-bottom: 1px solid #e7eef2;
+  border-bottom: 1px solid #e6eef2;
 }
 
-.panel-section:last-child {
-  border-bottom: 0;
-}
-
-.panel-title {
+.sectionTitle {
   font-size: 15px;
   font-weight: 800;
-  color: #214f68;
-  margin-bottom: 10px;
+  color: #244f66;
+  margin-bottom: 9px;
 }
 
-.map-status {
+.status {
   display: flex;
   align-items: center;
   gap: 7px;
   font-size: 12px;
-  color: #66808d;
+  color: #69818d;
 }
 
-.status-dot {
+.statusDot {
   width: 8px;
   height: 8px;
-  background: #31b96d;
   border-radius: 50%;
+  background: #35b86d;
 }
 
-.zoom-info {
-  margin-top: 8px;
+.zoomText {
+  margin-top: 7px;
   font-size: 12px;
   color: #78909c;
 }
 
-/* LAYERS */
+/* =========================
+   LAYERS
+========================= */
 
-.layer-row {
+.layer {
   display: flex;
   align-items: center;
   gap: 9px;
-  padding: 6px 0;
+  margin: 8px 0;
   font-size: 13px;
-  color: #455a64;
+  color: #506873;
 }
 
-.layer-row input {
+.layer input {
   width: 17px;
   height: 17px;
   accent-color: #269bd5;
 }
 
-/* LOCATION CARD */
+/* =========================
+   LOCATION
+========================= */
 
-.location-card {
+.location {
   display: none;
 }
 
-.location-type {
+.locationType {
   display: inline-block;
   background: #e7f6ff;
   color: #0876aa;
@@ -277,130 +319,72 @@ body {
   padding: 4px 8px;
   font-size: 10px;
   font-weight: 800;
-  text-transform: uppercase;
   margin-bottom: 8px;
 }
 
-.location-name-en {
+.locationEnglish {
   font-size: 21px;
-  line-height: 1.2;
   font-weight: 800;
-  color: #174e69;
+  line-height: 1.2;
+  color: #174f6a;
 }
 
-.location-name-th {
+.locationThai {
   font-size: 18px;
-  margin-top: 3px;
   color: #607d8b;
+  margin-top: 3px;
 }
 
-.location-detail {
+.infoRows {
   margin-top: 13px;
 }
 
-.detail-row {
+.infoRow {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
   padding: 6px 0;
-  border-bottom: 1px dashed #e1e9ed;
+  border-bottom: 1px dashed #e0e8ec;
   font-size: 12px;
 }
 
-.detail-label {
-  color: #8297a2;
+.infoLabel {
+  color: #8a9ba3;
 }
 
-.detail-value {
-  color: #405d6b;
+.infoValue {
   text-align: right;
   font-weight: 600;
-}
-
-/* SEARCH RESULTS */
-
-.search-results {
-  display: none;
-  position: absolute;
-  top: 51px;
-  left: 0;
-  right: 0;
-  background: white;
-  border: 1px solid #d4e2e9;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.14);
-  max-height: 420px;
-  overflow-y: auto;
-  z-index: 3000;
-}
-
-.search-result {
-  padding: 11px 14px;
-  border-bottom: 1px solid #edf2f5;
-  cursor: pointer;
-}
-
-.search-result:last-child {
-  border-bottom: 0;
-}
-
-.search-result:hover {
-  background: #f0f9fe;
-}
-
-.result-type {
-  font-size: 10px;
-  color: #2798ce;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
-.result-en {
-  font-size: 14px;
-  font-weight: 700;
-  color: #315b6e;
-  margin-top: 3px;
-}
-
-.result-th {
-  font-size: 13px;
-  color: #78909c;
-}
-
-.result-parent {
-  font-size: 10px;
-  color: #9aaab2;
-  margin-top: 3px;
+  color: #405d6a;
 }
 
 /* =========================
-   MAP CONTROLS
+   BUTTONS
 ========================= */
 
-.map-control-button {
-  background: white;
-  border: 0;
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.16);
-  cursor: pointer;
-  font-size: 20px;
-  color: #315b6e;
-}
-
-.map-control-button:hover {
-  background: #eef9ff;
-}
-
-.custom-controls {
+.mapButtons {
   position: absolute;
-  right: 15px;
   top: 15px;
-  z-index: 1100;
+  right: 15px;
+  z-index: 1400;
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.mapButton {
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 3px 12px rgba(0,0,0,.16);
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.mapButton:hover {
+  background: #eef9ff;
 }
 
 /* =========================
@@ -410,44 +394,44 @@ body {
 .legend {
   position: absolute;
   right: 15px;
-  bottom: 28px;
-  z-index: 1100;
-  background: rgba(255,255,255,0.95);
+  bottom: 25px;
+  z-index: 1400;
+  background: rgba(255,255,255,.95);
   padding: 11px 13px;
   border-radius: 11px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.14);
+  box-shadow: 0 4px 15px rgba(0,0,0,.14);
   font-size: 11px;
   color: #526a75;
 }
 
-.legend-title {
+.legendTitle {
   font-weight: 800;
   margin-bottom: 6px;
 }
 
-.legend-row {
+.legendRow {
   display: flex;
   align-items: center;
   gap: 7px;
   margin: 4px 0;
 }
 
-.legend-line {
+.line {
   width: 22px;
   height: 3px;
   border-radius: 3px;
 }
 
-.legend-province {
-  background: #3a9ed0;
+.provinceLine {
+  background: #269bd5;
 }
 
-.legend-district {
-  background: #8bb7c9;
+.districtLine {
+  background: #719eaf;
 }
 
-.legend-subdistrict {
-  background: #b8cbd3;
+.subdistrictLine {
+  background: #b4c6ce;
 }
 
 /* =========================
@@ -457,22 +441,22 @@ body {
 .loading {
   position: absolute;
   inset: 0;
-  background: rgba(255,255,255,0.82);
-  z-index: 5000;
+  background: rgba(255,255,255,.88);
+  z-index: 6000;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  gap: 13px;
+  gap: 12px;
 }
 
 .spinner {
-  width: 44px;
-  height: 44px;
-  border: 4px solid #dbeef7;
-  border-top-color: #269bd5;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+  border: 4px solid #dceff7;
+  border-top-color: #269bd5;
+  animation: spin .8s linear infinite;
 }
 
 @keyframes spin {
@@ -481,23 +465,27 @@ body {
   }
 }
 
-.loading-text {
-  font-size: 14px;
+.loadingText {
+  font-size: 15px;
   font-weight: 700;
-  color: #496c7b;
+  color: #496b7a;
+}
+
+.loadingSmall {
+  font-size: 11px;
+  color: #78909c;
 }
 
 /* =========================
-   RESPONSIVE
+   MOBILE
 ========================= */
 
-@media (max-width: 800px) {
+@media(max-width:800px) {
 
   .header {
     height: auto;
     min-height: 70px;
     flex-wrap: wrap;
-    gap: 8px;
     padding: 9px;
   }
 
@@ -506,87 +494,43 @@ body {
     flex: 1;
   }
 
-  .logo-title {
+  .logoTitle {
     font-size: 15px;
   }
 
-  .logo-subtitle {
+  .logoSubtitle {
     display: none;
   }
 
-  .search-area {
+  .searchArea {
     order: 3;
     flex-basis: 100%;
     max-width: none;
   }
 
-  .lang-buttons {
+  .languages {
     display: none;
   }
 
   .panel {
     width: calc(100% - 30px);
-    max-height: 48%;
+    max-height: 45%;
     top: auto;
     bottom: 15px;
+  }
+
+  .panelScroll {
+    max-height: 45vh;
   }
 
   .legend {
     display: none;
   }
 
-  .custom-controls {
+  .mapButtons {
     top: 10px;
     right: 10px;
   }
-}
-
-@media (max-width: 500px) {
-
-  .panel {
-    max-height: 43%;
-  }
-
-  .location-name-en {
-    font-size: 18px;
-  }
-
-  .location-name-th {
-    font-size: 16px;
-  }
-}
-
-/* Leaflet tweaks */
-
-.leaflet-control-zoom {
-  display: none;
-}
-
-.leaflet-popup-content {
-  margin: 13px 15px;
-}
-
-.leaflet-popup-content-wrapper {
-  border-radius: 12px;
-}
-
-.popup-title {
-  font-weight: 800;
-  font-size: 16px;
-  color: #205b91;
-}
-
-.popup-th {
-  color: #718894;
-  margin-top: 2px;
-}
-
-.popup-type {
-  color: #269bd5;
-  font-size: 10px;
-  font-weight: 800;
-  margin-bottom: 5px;
-  text-transform: uppercase;
 }
 </style>
 </head>
@@ -595,313 +539,370 @@ body {
 
 <div id="app">
 
-  <!-- HEADER -->
-  <header class="header">
+<header class="header">
 
-    <div class="logo">
-      <div class="logo-icon">🇹🇭</div>
+  <div class="logo">
 
-      <div class="logo-text">
-        <div class="logo-title">
-          Thailand Geography
-        </div>
+    <div class="logoIcon">
+      🇹🇭
+    </div>
 
-        <div class="logo-subtitle">
-          Thailand Geography Explorer • แผนที่ประเทศไทย
-        </div>
+    <div>
+      <div class="logoTitle">
+        Thailand Geography
+      </div>
+
+      <div class="logoSubtitle">
+        Geography Explorer • แผนที่ประเทศไทย
       </div>
     </div>
 
-    <div class="search-area">
+  </div>
 
-      <span class="search-icon">🔍</span>
 
-      <input
-        id="searchInput"
-        class="search-box"
-        type="text"
-        autocomplete="off"
-        placeholder="Search province, district, subdistrict... / ค้นหาสถานที่..."
+  <div class="searchArea">
+
+    <span class="searchIcon">🔍</span>
+
+    <input
+      id="searchInput"
+      class="searchInput"
+      placeholder="Search Thailand / ค้นหาสถานที่..."
+      autocomplete="off"
+    >
+
+    <button
+      id="clearButton"
+      class="clearButton"
+    >
+      ×
+    </button>
+
+    <div
+      id="searchResults"
+      class="searchResults"
+    ></div>
+
+  </div>
+
+
+  <div class="languages">
+
+    <button
+      class="lang active"
+      id="enButton"
+    >
+      EN
+    </button>
+
+    <button
+      class="lang"
+      id="thButton"
+    >
+      ไทย
+    </button>
+
+    <button
+      class="lang"
+      id="bothButton"
+    >
+      EN + ไทย
+    </button>
+
+  </div>
+
+</header>
+
+
+<main class="main">
+
+  <div id="map"></div>
+
+
+  <div class="mapButtons">
+
+    <button
+      class="mapButton"
+      id="homeButton"
+      title="Thailand"
+    >
+      🇹🇭
+    </button>
+
+    <button
+      class="mapButton"
+      id="locationButton"
+      title="My location"
+    >
+      📍
+    </button>
+
+  </div>
+
+
+  <aside class="panel">
+
+    <div class="panelScroll">
+
+      <section class="section">
+
+        <div class="sectionTitle">
+          Map Information
+        </div>
+
+        <div class="status">
+
+          <span
+            class="statusDot"
+            id="statusDot"
+          ></span>
+
+          <span id="statusText">
+            Starting map...
+          </span>
+
+        </div>
+
+        <div class="zoomText">
+          Zoom:
+          <strong id="zoomNumber">6</strong>
+        </div>
+
+      </section>
+
+
+      <section class="section">
+
+        <div class="sectionTitle">
+          Map Layers
+        </div>
+
+        <label class="layer">
+
+          <input
+            type="checkbox"
+            id="provinceToggle"
+            checked
+          >
+
+          Provinces / จังหวัด
+
+        </label>
+
+
+        <label class="layer">
+
+          <input
+            type="checkbox"
+            id="districtToggle"
+            checked
+          >
+
+          Districts / อำเภอ
+
+        </label>
+
+
+        <label class="layer">
+
+          <input
+            type="checkbox"
+            id="subdistrictToggle"
+            checked
+          >
+
+          Subdistricts / ตำบล
+
+        </label>
+
+        <div style="
+          margin-top:10px;
+          font-size:11px;
+          color:#8a9ba3;
+          line-height:1.5;
+        ">
+          Roads are supplied by OpenStreetMap and
+          appear automatically as you zoom in.
+        </div>
+
+      </section>
+
+
+      <section
+        id="locationSection"
+        class="section location"
       >
 
-      <button
-        id="clearSearch"
-        class="clear-search"
-        type="button"
-      >×</button>
-
-      <div id="searchResults" class="search-results"></div>
-
-    </div>
-
-    <div class="lang-buttons">
-
-      <button
-        id="langEN"
-        class="lang-button active"
-        type="button"
-      >EN</button>
-
-      <button
-        id="langTH"
-        class="lang-button"
-        type="button"
-      >ไทย</button>
-
-      <button
-        id="langBoth"
-        class="lang-button"
-        type="button"
-      >EN + ไทย</button>
-
-    </div>
-
-  </header>
-
-  <!-- MAIN -->
-  <main class="main">
-
-    <div id="map"></div>
-
-    <!-- CUSTOM MAP BUTTONS -->
-    <div class="custom-controls">
-
-      <button
-        id="homeButton"
-        class="map-control-button"
-        title="Thailand"
-      >🇹🇭</button>
-
-      <button
-        id="locationButton"
-        class="map-control-button"
-        title="My location"
-      >📍</button>
-
-    </div>
-
-    <!-- SIDE PANEL -->
-    <aside class="panel">
-
-      <div class="panel-scroll">
-
-        <!-- STATUS -->
-        <section class="panel-section">
-
-          <div class="panel-title">
-            Map Information
-          </div>
-
-          <div class="map-status">
-            <span class="status-dot"></span>
-            <span id="dataStatus">
-              Loading Thailand geography...
-            </span>
-          </div>
-
-          <div class="zoom-info">
-            Zoom level:
-            <strong id="zoomLevel">6</strong>
-          </div>
-
-        </section>
-
-        <!-- LAYERS -->
-        <section class="panel-section">
-
-          <div class="panel-title">
-            Map Layers
-          </div>
-
-          <label class="layer-row">
-            <input
-              type="checkbox"
-              id="provinceToggle"
-              checked
-            >
-            <span>Provinces / จังหวัด</span>
-          </label>
-
-          <label class="layer-row">
-            <input
-              type="checkbox"
-              id="districtToggle"
-              checked
-            >
-            <span>Districts / อำเภอ</span>
-          </label>
-
-          <label class="layer-row">
-            <input
-              type="checkbox"
-              id="subdistrictToggle"
-              checked
-            >
-            <span>Subdistricts / ตำบล</span>
-          </label>
-
-          <label class="layer-row">
-            <input
-              type="checkbox"
-              id="roadToggle"
-              checked
-            >
-            <span>Roads / ถนน</span>
-          </label>
-
-        </section>
-
-        <!-- LOCATION -->
-        <section
-          id="locationCard"
-          class="panel-section location-card"
+        <div
+          id="locationType"
+          class="locationType"
         >
+          PROVINCE
+        </div>
 
-          <div id="locationType" class="location-type">
-            Province
-          </div>
+        <div
+          id="locationEnglish"
+          class="locationEnglish"
+        ></div>
 
-          <div
-            id="locationNameEN"
-            class="location-name-en"
-          ></div>
+        <div
+          id="locationThai"
+          class="locationThai"
+        ></div>
 
-          <div
-            id="locationNameTH"
-            class="location-name-th"
-          ></div>
+        <div
+          id="infoRows"
+          class="infoRows"
+        ></div>
 
-          <div
-            id="locationDetail"
-            class="location-detail"
-          ></div>
+      </section>
 
-        </section>
 
-        <!-- HELP -->
-        <section class="panel-section">
+      <section class="section">
 
-          <div class="panel-title">
-            Zoom Guide
-          </div>
+        <div class="sectionTitle">
+          Zoom Guide
+        </div>
 
-          <div style="
-            font-size:12px;
-            line-height:1.7;
-            color:#718894;
-          ">
+        <div style="
+          font-size:12px;
+          line-height:1.7;
+          color:#718894;
+        ">
 
-            <strong>Zoom out</strong><br>
-            Thailand → regions → provinces
+          <strong>Zoom out</strong><br>
+          Thailand → Provinces
 
-            <br><br>
+          <br><br>
 
-            <strong>Zoom in</strong><br>
-            provinces → districts → subdistricts → roads
+          <strong>Zoom in</strong><br>
+          Provinces → Districts → Subdistricts
 
-            <br><br>
+          <br><br>
 
-            Click an area to see its Thai and English name.
+          <strong>Zoom further</strong><br>
+          Streets, roads and local places
 
-          </div>
+        </div>
 
-        </section>
-
-      </div>
-
-    </aside>
-
-    <!-- LEGEND -->
-    <div class="legend">
-
-      <div class="legend-title">
-        Administrative Boundaries
-      </div>
-
-      <div class="legend-row">
-        <span class="legend-line legend-province"></span>
-        Province
-      </div>
-
-      <div class="legend-row">
-        <span class="legend-line legend-district"></span>
-        District
-      </div>
-
-      <div class="legend-row">
-        <span class="legend-line legend-subdistrict"></span>
-        Subdistrict
-      </div>
+      </section>
 
     </div>
 
-    <!-- LOADING -->
-    <div id="loading" class="loading">
+  </aside>
 
-      <div class="spinner"></div>
 
-      <div class="loading-text">
-        Loading Thailand Geography...
-      </div>
+  <div class="legend">
 
-      <div style="
-        font-size:11px;
-        color:#78909c;
-      ">
-        กำลังโหลดข้อมูลภูมิศาสตร์ประเทศไทย
-      </div>
-
+    <div class="legendTitle">
+      Administrative Boundaries
     </div>
 
-  </main>
+    <div class="legendRow">
+      <span class="line provinceLine"></span>
+      Province
+    </div>
+
+    <div class="legendRow">
+      <span class="line districtLine"></span>
+      District
+    </div>
+
+    <div class="legendRow">
+      <span class="line subdistrictLine"></span>
+      Subdistrict
+    </div>
+
+  </div>
+
+
+  <div
+    id="loading"
+    class="loading"
+  >
+
+    <div class="spinner"></div>
+
+    <div class="loadingText">
+      Loading Thailand Geography...
+    </div>
+
+    <div class="loadingSmall">
+      กำลังโหลดข้อมูลภูมิศาสตร์ประเทศไทย
+    </div>
+
+  </div>
+
+</main>
 
 </div>
 
 
-<!-- LEAFLET -->
 <script
   src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-  crossorigin=""
 ></script>
 
 
 <script>
 
-/* ==========================================================
-   CONFIGURATION
-========================================================== */
+/* =====================================================
+   DATA SOURCES
+===================================================== */
 
-const CONFIG = {
+const DATA = {
 
-  /* Thailand centre */
-  thailandCenter: [13.7367, 100.5231],
+  province:
+    "https://raw.githubusercontent.com/knottx/opengisdata-thailand/master/provinces.geojson",
 
-  thailandZoom: 6,
+  district:
+    "https://raw.githubusercontent.com/knottx/opengisdata-thailand/master/districts.geojson",
 
-  /* Geographic datasets */
-
-  provinceURL:
-    "https://raw.githubusercontent.com/chingchai/OpenGISData-Thailand/master/provinces.geojson",
-
-  districtURL:
-    "https://raw.githubusercontent.com/chingchai/OpenGISData-Thailand/master/districts.geojson",
-
-  subdistrictURL:
-    "https://raw.githubusercontent.com/chingchai/OpenGISData-Thailand/master/subdistricts.geojson",
-
-  /* OpenStreetMap */
-  osmTiles:
-    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  subdistrict:
+    "https://raw.githubusercontent.com/knottx/opengisdata-thailand/master/subdistricts.geojson"
 
 };
 
 
-/* ==========================================================
-   GLOBAL VARIABLES
-========================================================== */
+/* =====================================================
+   MAP
+===================================================== */
 
-let map;
+const map = L.map("map", {
+
+  center: [13.7367,100.5231],
+
+  zoom: 6,
+
+  minZoom: 5,
+
+  maxZoom: 19,
+
+  zoomControl: true
+
+});
+
+
+/* OpenStreetMap */
+
+L.tileLayer(
+
+  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+
+  {
+
+    maxZoom: 19,
+
+    attribution:
+      '&copy; OpenStreetMap contributors'
+
+  }
+
+).addTo(map);
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
 
 let provinceLayer = null;
 let districtLayer = null;
@@ -911,169 +912,35 @@ let provinceData = null;
 let districtData = null;
 let subdistrictData = null;
 
-let currentLocation = null;
-
-let currentLanguage = "both";
+let searchDatabase = [];
 
 
-/* ==========================================================
-   MAP INITIALIZATION
-========================================================== */
+/* =====================================================
+   STATUS
+===================================================== */
 
-function initializeMap() {
+function status(text) {
 
-  map = L.map("map", {
-
-    center: CONFIG.thailandCenter,
-
-    zoom: CONFIG.thailandZoom,
-
-    minZoom: 5,
-
-    maxZoom: 19,
-
-    zoomControl: false,
-
-    preferCanvas: true
-
-  });
-
-
-  /* OpenStreetMap */
-
-  L.tileLayer(CONFIG.osmTiles, {
-
-    maxZoom: 19,
-
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
-
-  }).addTo(map);
-
-
-  /* Zoom display */
-
-  map.on("zoomend", function() {
-
-    document.getElementById("zoomLevel").textContent =
-      map.getZoom();
-
-    updateVisibility();
-
-  });
-
-
-  /* Map click */
-
-  map.on("click", function() {
-
-    hideSearchResults();
-
-  });
-
-
-  updateZoomDisplay();
+  document.getElementById(
+    "statusText"
+  ).textContent = text;
 
 }
 
 
-/* ==========================================================
-   LOAD DATA
-========================================================== */
+/* =====================================================
+   FETCH
+===================================================== */
 
-async function loadGeography() {
+async function getJSON(url) {
 
-  try {
-
-    setStatus("Loading provinces...");
-
-    provinceData =
-      await fetchJSON(CONFIG.provinceURL);
-
-    setStatus("Loading districts...");
-
-    districtData =
-      await fetchJSON(CONFIG.districtURL);
-
-    setStatus("Loading subdistricts...");
-
-    subdistrictData =
-      await fetchJSON(CONFIG.subdistrictURL);
-
-
-    buildProvinceLayer();
-
-    buildDistrictLayer();
-
-    buildSubdistrictLayer();
-
-
-    document.getElementById("loading").style.display =
-      "none";
-
-    setStatus(
-      "Thailand geography loaded"
-    );
-
-
-    updateVisibility();
-
-  }
-
-  catch(error) {
-
-    console.error(error);
-
-    document.getElementById("loading").innerHTML = `
-
-      <div style="
-        font-size:35px;
-      ">
-        ⚠️
-      </div>
-
-      <div style="
-        font-size:15px;
-        font-weight:800;
-        color:#b23b3b;
-      ">
-        Could not load map data
-      </div>
-
-      <div style="
-        max-width:320px;
-        text-align:center;
-        font-size:12px;
-        color:#78909c;
-        line-height:1.6;
-      ">
-        Please check your internet connection and
-        refresh the page.
-      </div>
-
-    `;
-
-  }
-
-}
-
-
-/* ==========================================================
-   FETCH JSON
-========================================================== */
-
-async function fetchJSON(url) {
-
-  const response = await fetch(url, {
-
-    cache: "force-cache"
-
-  });
+  const response =
+    await fetch(url);
 
   if (!response.ok) {
 
     throw new Error(
-      "Failed to load: " + url
+      "Could not load " + url
     );
 
   }
@@ -1083,11 +950,21 @@ async function fetchJSON(url) {
 }
 
 
-/* ==========================================================
-   PROVINCES
-========================================================== */
+/* =====================================================
+   LOAD PROVINCES
+===================================================== */
 
-function buildProvinceLayer() {
+async function loadProvinces() {
+
+  status(
+    "Loading 77 provinces..."
+  );
+
+  provinceData =
+    await getJSON(
+      DATA.province
+    );
+
 
   provinceLayer =
     L.geoJSON(
@@ -1098,21 +975,22 @@ function buildProvinceLayer() {
 
         style: {
 
-          color: "#2798ce",
+          color: "#168dc4",
 
           weight: 2.3,
 
-          opacity: 0.95,
+          fillColor: "#9edcf3",
 
-          fillColor: "#bce6f7",
-
-          fillOpacity: 0.16
+          fillOpacity: .14
 
         },
 
-
         onEachFeature:
-          function(feature, layer) {
+
+          function(
+            feature,
+            layer
+          ) {
 
             layer.on({
 
@@ -1123,7 +1001,7 @@ function buildProvinceLayer() {
 
                     weight: 3,
 
-                    fillOpacity: 0.28
+                    fillOpacity: .30
 
                   });
 
@@ -1132,16 +1010,17 @@ function buildProvinceLayer() {
               mouseout:
                 function(e) {
 
-                  provinceLayer.resetStyle(
-                    e.target
-                  );
+                  provinceLayer
+                    .resetStyle(
+                      e.target
+                    );
 
                 },
 
               click:
                 function() {
 
-                  showFeatureInfo(
+                  showLocation(
                     feature,
                     "province"
                   );
@@ -1154,19 +1033,29 @@ function buildProvinceLayer() {
 
       }
 
-    );
+    ).addTo(map);
 
 
-  provinceLayer.addTo(map);
+  createProvinceSearchData();
 
 }
 
 
-/* ==========================================================
-   DISTRICTS
-========================================================== */
+/* =====================================================
+   LOAD DISTRICTS
+===================================================== */
 
-function buildDistrictLayer() {
+async function loadDistricts() {
+
+  status(
+    "Loading districts..."
+  );
+
+  districtData =
+    await getJSON(
+      DATA.district
+    );
+
 
   districtLayer =
     L.geoJSON(
@@ -1177,21 +1066,22 @@ function buildDistrictLayer() {
 
         style: {
 
-          color: "#7da8b8",
+          color: "#6e9bad",
 
           weight: 1,
 
-          opacity: 0.75,
+          fillColor: "#d9ebf2",
 
-          fillColor: "#dcebf1",
-
-          fillOpacity: 0.04
+          fillOpacity: .03
 
         },
 
-
         onEachFeature:
-          function(feature, layer) {
+
+          function(
+            feature,
+            layer
+          ) {
 
             layer.on({
 
@@ -1202,9 +1092,9 @@ function buildDistrictLayer() {
 
                     weight: 2,
 
-                    color: "#4d8ba3",
+                    color: "#3e819b",
 
-                    fillOpacity: 0.15
+                    fillOpacity: .16
 
                   });
 
@@ -1213,16 +1103,17 @@ function buildDistrictLayer() {
               mouseout:
                 function(e) {
 
-                  districtLayer.resetStyle(
-                    e.target
-                  );
+                  districtLayer
+                    .resetStyle(
+                      e.target
+                    );
 
                 },
 
               click:
                 function() {
 
-                  showFeatureInfo(
+                  showLocation(
                     feature,
                     "district"
                   );
@@ -1237,17 +1128,26 @@ function buildDistrictLayer() {
 
     );
 
-
-  districtLayer.addTo(map);
+  createDistrictSearchData();
 
 }
 
 
-/* ==========================================================
-   SUBDISTRICTS
-========================================================== */
+/* =====================================================
+   LOAD SUBDISTRICTS
+===================================================== */
 
-function buildSubdistrictLayer() {
+async function loadSubdistricts() {
+
+  status(
+    "Loading subdistricts..."
+  );
+
+  subdistrictData =
+    await getJSON(
+      DATA.subdistrict
+    );
+
 
   subdistrictLayer =
     L.geoJSON(
@@ -1258,21 +1158,22 @@ function buildSubdistrictLayer() {
 
         style: {
 
-          color: "#b4c7ce",
+          color: "#b2c5cc",
 
-          weight: 0.6,
+          weight: .55,
 
-          opacity: 0.7,
+          fillColor: "#eef5f7",
 
-          fillColor: "#edf4f7",
-
-          fillOpacity: 0.02
+          fillOpacity: .02
 
         },
 
-
         onEachFeature:
-          function(feature, layer) {
+
+          function(
+            feature,
+            layer
+          ) {
 
             layer.on({
 
@@ -1281,11 +1182,11 @@ function buildSubdistrictLayer() {
 
                   e.target.setStyle({
 
-                    weight: 1.6,
+                    weight: 1.5,
 
-                    color: "#6f9eae",
+                    color: "#6e9aaa",
 
-                    fillOpacity: 0.12
+                    fillOpacity: .12
 
                   });
 
@@ -1294,16 +1195,17 @@ function buildSubdistrictLayer() {
               mouseout:
                 function(e) {
 
-                  subdistrictLayer.resetStyle(
-                    e.target
-                  );
+                  subdistrictLayer
+                    .resetStyle(
+                      e.target
+                    );
 
                 },
 
               click:
                 function() {
 
-                  showFeatureInfo(
+                  showLocation(
                     feature,
                     "subdistrict"
                   );
@@ -1318,105 +1220,120 @@ function buildSubdistrictLayer() {
 
     );
 
-
-  subdistrictLayer.addTo(map);
-
-}
-
-
-/* ==========================================================
-   ZOOM VISIBILITY
-========================================================== */
-
-function updateVisibility() {
-
-  if (!map) return;
-
-  const zoom =
-    map.getZoom();
-
-
-  /*
-    Country:
-    province boundaries
-
-    Medium:
-    districts
-
-    High:
-    subdistricts
-  */
-
-
-  if (zoom < 8) {
-
-    showLayer(provinceLayer);
-
-    hideLayer(districtLayer);
-
-    hideLayer(subdistrictLayer);
-
-  }
-
-  else if (zoom < 11) {
-
-    showLayer(provinceLayer);
-
-    showLayer(districtLayer);
-
-    hideLayer(subdistrictLayer);
-
-  }
-
-  else {
-
-    showLayer(provinceLayer);
-
-    showLayer(districtLayer);
-
-    showLayer(subdistrictLayer);
-
-  }
-
-
-  /* Respect checkbox */
-
-  if (
-    !document.getElementById(
-      "provinceToggle"
-    ).checked
-  ) {
-
-    hideLayer(provinceLayer);
-
-  }
-
-
-  if (
-    !document.getElementById(
-      "districtToggle"
-    ).checked
-  ) {
-
-    hideLayer(districtLayer);
-
-  }
-
-
-  if (
-    !document.getElementById(
-      "subdistrictToggle"
-    ).checked
-  ) {
-
-    hideLayer(subdistrictLayer);
-
-  }
+  createSubdistrictSearchData();
 
 }
 
 
-function showLayer(layer) {
+/* =====================================================
+   SEARCH DATA
+===================================================== */
+
+function createProvinceSearchData() {
+
+  provinceData.features.forEach(
+    feature => {
+
+      const p =
+        feature.properties || {};
+
+      searchDatabase.push({
+
+        type: "province",
+
+        en:
+          p.pro_en || "",
+
+        th:
+          p.pro_th || "",
+
+        parentEN: "",
+
+        parentTH: "",
+
+        feature
+
+      });
+
+    }
+  );
+
+}
+
+
+function createDistrictSearchData() {
+
+  districtData.features.forEach(
+    feature => {
+
+      const p =
+        feature.properties || {};
+
+      searchDatabase.push({
+
+        type: "district",
+
+        en:
+          p.amp_en || "",
+
+        th:
+          p.amp_th || "",
+
+        parentEN:
+          p.pro_en || "",
+
+        parentTH:
+          p.pro_th || "",
+
+        feature
+
+      });
+
+    }
+  );
+
+}
+
+
+function createSubdistrictSearchData() {
+
+  subdistrictData.features.forEach(
+    feature => {
+
+      const p =
+        feature.properties || {};
+
+      searchDatabase.push({
+
+        type: "subdistrict",
+
+        en:
+          p.tam_en || "",
+
+        th:
+          p.tam_th || "",
+
+        parentEN:
+          p.amp_en || "",
+
+        parentTH:
+          p.amp_th || "",
+
+        feature
+
+      });
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   SHOW / HIDE LAYERS
+===================================================== */
+
+function show(layer) {
 
   if (
     layer &&
@@ -1430,7 +1347,7 @@ function showLayer(layer) {
 }
 
 
-function hideLayer(layer) {
+function hide(layer) {
 
   if (
     layer &&
@@ -1444,11 +1361,111 @@ function hideLayer(layer) {
 }
 
 
-/* ==========================================================
-   INFORMATION PANEL
-========================================================== */
+/* =====================================================
+   ZOOM LOGIC
+===================================================== */
 
-function showFeatureInfo(
+function updateLayers() {
+
+  const z =
+    map.getZoom();
+
+
+  document.getElementById(
+    "zoomNumber"
+  ).textContent =
+    z;
+
+
+  /*
+    Z5-Z7
+    Provinces
+
+    Z8-Z10
+    Provinces + Districts
+
+    Z11+
+    Provinces + Districts + Subdistricts
+  */
+
+
+  if (z < 8) {
+
+    show(provinceLayer);
+
+    hide(districtLayer);
+
+    hide(subdistrictLayer);
+
+  }
+
+  else if (z < 11) {
+
+    show(provinceLayer);
+
+    show(districtLayer);
+
+    hide(subdistrictLayer);
+
+  }
+
+  else {
+
+    show(provinceLayer);
+
+    show(districtLayer);
+
+    show(subdistrictLayer);
+
+  }
+
+
+  if (
+    !document.getElementById(
+      "provinceToggle"
+    ).checked
+  ) {
+
+    hide(provinceLayer);
+
+  }
+
+
+  if (
+    !document.getElementById(
+      "districtToggle"
+    ).checked
+  ) {
+
+    hide(districtLayer);
+
+  }
+
+
+  if (
+    !document.getElementById(
+      "subdistrictToggle"
+    ).checked
+  ) {
+
+    hide(subdistrictLayer);
+
+  }
+
+}
+
+
+map.on(
+  "zoomend",
+  updateLayers
+);
+
+
+/* =====================================================
+   LOCATION INFORMATION
+===================================================== */
+
+function showLocation(
   feature,
   type
 ) {
@@ -1466,113 +1483,191 @@ function showFeatureInfo(
   let code = "";
 
 
-  if (type === "province") {
+  if (
+    type === "province"
+  ) {
 
     en =
-      p.pro_en ||
-      p.provinceNameEn ||
-      p.name_en ||
-      "";
+      p.pro_en || "";
 
     th =
-      p.pro_th ||
-      p.provinceNameTh ||
-      p.name_th ||
-      "";
+      p.pro_th || "";
 
     code =
-      p.pro_code ||
-      "";
+      p.pro_code || "";
 
   }
 
 
-  if (type === "district") {
+  if (
+    type === "district"
+  ) {
 
     en =
-      p.amp_en ||
-      p.districtNameEn ||
-      p.name_en ||
-      "";
+      p.amp_en || "";
 
     th =
-      p.amp_th ||
-      p.districtNameTh ||
-      p.name_th ||
-      "";
+      p.amp_th || "";
 
     parentEN =
-      p.pro_en ||
-      p.provinceNameEn ||
-      "";
+      p.pro_en || "";
 
     parentTH =
-      p.pro_th ||
-      p.provinceNameTh ||
-      "";
+      p.pro_th || "";
 
     code =
-      p.amp_code ||
-      p.districtCode ||
-      "";
+      p.amp_code || "";
 
   }
 
 
-  if (type === "subdistrict") {
+  if (
+    type === "subdistrict"
+  ) {
 
     en =
-      p.tam_en ||
-      p.subdistrictNameEn ||
-      p.name_en ||
-      "";
+      p.tam_en || "";
 
     th =
-      p.tam_th ||
-      p.subdistrictNameTh ||
-      p.name_th ||
-      "";
+      p.tam_th || "";
 
     parentEN =
-      p.amp_en ||
-      p.districtNameEn ||
-      "";
+      p.amp_en || "";
 
     parentTH =
-      p.amp_th ||
-      p.districtNameTh ||
-      "";
+      p.amp_th || "";
 
     code =
-      p.tam_code ||
-      p.subdistrictCode ||
-      "";
+      p.tam_code || "";
 
   }
 
 
-  currentLocation = {
-
-    feature,
-    type,
-    en,
-    th,
-    parentEN,
-    parentTH,
-    code
-
-  };
+  document.getElementById(
+    "locationSection"
+  ).style.display =
+    "block";
 
 
-  renderLocationCard();
+  let typeText =
+    type === "province"
+      ? "PROVINCE / จังหวัด"
+      : type === "district"
+        ? "DISTRICT / อำเภอ"
+        : "SUBDISTRICT / ตำบล";
 
 
-  /* Zoom to selected feature */
+  document.getElementById(
+    "locationType"
+  ).textContent =
+    typeText;
+
+
+  document.getElementById(
+    "locationEnglish"
+  ).textContent =
+    en;
+
+
+  document.getElementById(
+    "locationThai"
+  ).textContent =
+    th;
+
+
+  let html = "";
+
+
+  if (code) {
+
+    html += `
+
+      <div class="infoRow">
+
+        <span class="infoLabel">
+          Code
+        </span>
+
+        <span class="infoValue">
+          ${escapeHTML(code)}
+        </span>
+
+      </div>
+
+    `;
+
+  }
+
+
+  if (parentEN) {
+
+    html += `
+
+      <div class="infoRow">
+
+        <span class="infoLabel">
+          Parent
+        </span>
+
+        <span class="infoValue">
+
+          ${escapeHTML(
+            parentEN
+          )}
+
+          <br>
+
+          ${escapeHTML(
+            parentTH
+          )}
+
+        </span>
+
+      </div>
+
+    `;
+
+  }
+
+
+  if (p.postalCode) {
+
+    html += `
+
+      <div class="infoRow">
+
+        <span class="infoLabel">
+          Postal Code
+        </span>
+
+        <span class="infoValue">
+          ${escapeHTML(
+            p.postalCode
+          )}
+        </span>
+
+      </div>
+
+    `;
+
+  }
+
+
+  document.getElementById(
+    "infoRows"
+  ).innerHTML =
+    html;
+
+
+  /* Zoom to boundary */
 
   try {
 
+    const geo =
+      L.geoJSON(feature);
+
     const bounds =
-      L.geoJSON(feature).getBounds();
+      geo.getBounds();
 
     if (bounds.isValid()) {
 
@@ -1595,455 +1690,130 @@ function showFeatureInfo(
     }
 
   }
+  catch(error) {
 
-  catch(e) {
-
-    console.warn(e);
+    console.log(error);
 
   }
 
 }
 
 
-/* ==========================================================
-   RENDER LOCATION CARD
-========================================================== */
-
-function renderLocationCard() {
-
-  if (!currentLocation) return;
-
-
-  const card =
-    document.getElementById(
-      "locationCard"
-    );
-
-
-  card.style.display =
-    "block";
-
-
-  const type =
-    currentLocation.type;
-
-
-  let typeText =
-    "Province";
-
-
-  if (type === "district") {
-
-    typeText =
-      "District / อำเภอ";
-
-  }
-
-
-  if (type === "subdistrict") {
-
-    typeText =
-      "Subdistrict / ตำบล";
-
-  }
-
-
-  document.getElementById(
-    "locationType"
-  ).textContent =
-    typeText;
-
-
-  document.getElementById(
-    "locationNameEN"
-  ).textContent =
-    currentLocation.en ||
-    "Unknown";
-
-
-  document.getElementById(
-    "locationNameTH"
-  ).textContent =
-    currentLocation.th ||
-    "";
-
-
-  let html = "";
-
-
-  if (currentLocation.code) {
-
-    html += `
-
-      <div class="detail-row">
-
-        <span class="detail-label">
-          Code
-        </span>
-
-        <span class="detail-value">
-          ${escapeHTML(
-            String(currentLocation.code)
-          )}
-        </span>
-
-      </div>
-
-    `;
-
-  }
-
-
-  if (
-    currentLocation.parentEN ||
-    currentLocation.parentTH
-  ) {
-
-    html += `
-
-      <div class="detail-row">
-
-        <span class="detail-label">
-          Parent
-        </span>
-
-        <span class="detail-value">
-
-          ${escapeHTML(
-            currentLocation.parentEN
-          )}
-
-          <br>
-
-          ${escapeHTML(
-            currentLocation.parentTH
-          )}
-
-        </span>
-
-      </div>
-
-    `;
-
-  }
-
-
-  const p =
-    currentLocation.feature.properties ||
-    {};
-
-
-  if (p.postalCode) {
-
-    html += `
-
-      <div class="detail-row">
-
-        <span class="detail-label">
-          Postal code
-        </span>
-
-        <span class="detail-value">
-          ${escapeHTML(
-            String(p.postalCode)
-          )}
-        </span>
-
-      </div>
-
-    `;
-
-  }
-
-
-  if (p.area_sqkm) {
-
-    html += `
-
-      <div class="detail-row">
-
-        <span class="detail-label">
-          Area
-        </span>
-
-        <span class="detail-value">
-          ${Number(
-            p.area_sqkm
-          ).toLocaleString()} km²
-        </span>
-
-      </div>
-
-    `;
-
-  }
-
-
-  document.getElementById(
-    "locationDetail"
-  ).innerHTML =
-    html;
-
-}
-
-
-/* ==========================================================
-   SEARCH DATABASE
-========================================================== */
-
-function getSearchItems() {
-
-  const items = [];
-
-
-  /* Provinces */
-
-  if (provinceData) {
-
-    provinceData.features.forEach(
-      function(feature) {
-
-        const p =
-          feature.properties || {};
-
-        items.push({
-
-          type: "province",
-
-          en:
-            p.pro_en ||
-            p.provinceNameEn ||
-            p.name_en ||
-            "",
-
-          th:
-            p.pro_th ||
-            p.provinceNameTh ||
-            p.name_th ||
-            "",
-
-          parentEN: "",
-
-          parentTH: "",
-
-          feature
-
-        });
-
-      }
-    );
-
-  }
-
-
-  /* Districts */
-
-  if (districtData) {
-
-    districtData.features.forEach(
-      function(feature) {
-
-        const p =
-          feature.properties || {};
-
-        items.push({
-
-          type: "district",
-
-          en:
-            p.amp_en ||
-            p.districtNameEn ||
-            p.name_en ||
-            "",
-
-          th:
-            p.amp_th ||
-            p.districtNameTh ||
-            p.name_th ||
-            "",
-
-          parentEN:
-            p.pro_en ||
-            p.provinceNameEn ||
-            "",
-
-          parentTH:
-            p.pro_th ||
-            p.provinceNameTh ||
-            "",
-
-          feature
-
-        });
-
-      }
-    );
-
-  }
-
-
-  /* Subdistricts */
-
-  if (subdistrictData) {
-
-    subdistrictData.features.forEach(
-      function(feature) {
-
-        const p =
-          feature.properties || {};
-
-        items.push({
-
-          type: "subdistrict",
-
-          en:
-            p.tam_en ||
-            p.subdistrictNameEn ||
-            p.name_en ||
-            "",
-
-          th:
-            p.tam_th ||
-            p.subdistrictNameTh ||
-            p.name_th ||
-            "",
-
-          parentEN:
-            p.amp_en ||
-            p.districtNameEn ||
-            "",
-
-          parentTH:
-            p.amp_th ||
-            p.districtNameTh ||
-            "",
-
-          feature
-
-        });
-
-      }
-    );
-
-  }
-
-
-  return items;
-
-}
-
-
-let searchItems = [];
-
-
-/* ==========================================================
+/* =====================================================
    SEARCH
-========================================================== */
+===================================================== */
 
-function performSearch(query) {
+const searchInput =
+  document.getElementById(
+    "searchInput"
+  );
 
-  query =
-    query
-      .trim()
-      .toLowerCase();
+const searchResults =
+  document.getElementById(
+    "searchResults"
+  );
 
 
-  if (!query) {
+searchInput.addEventListener(
+  "input",
+  function() {
 
-    hideSearchResults();
+    const q =
+      searchInput.value
+        .trim()
+        .toLowerCase();
 
-    return;
+
+    document.getElementById(
+      "clearButton"
+    ).style.display =
+      q
+        ? "block"
+        : "none";
+
+
+    if (!q) {
+
+      searchResults.style.display =
+        "none";
+
+      return;
+
+    }
+
+
+    const results =
+      searchDatabase
+        .filter(
+          item => {
+
+            return (
+
+              item.en
+                .toLowerCase()
+                .includes(q)
+
+              ||
+
+              item.th
+                .toLowerCase()
+                .includes(q)
+
+              ||
+
+              item.parentEN
+                .toLowerCase()
+                .includes(q)
+
+              ||
+
+              item.parentTH
+                .toLowerCase()
+                .includes(q)
+
+            );
+
+          }
+        )
+        .slice(0,30);
+
+
+    renderResults(
+      results
+    );
 
   }
+);
 
 
-  if (
-    !searchItems.length
-  ) {
+/* =====================================================
+   RENDER SEARCH
+===================================================== */
 
-    searchItems =
-      getSearchItems();
-
-  }
-
-
-  const results =
-    searchItems
-      .filter(function(item) {
-
-        const en =
-          String(
-            item.en || ""
-          ).toLowerCase();
-
-        const th =
-          String(
-            item.th || ""
-          ).toLowerCase();
-
-        const parentEN =
-          String(
-            item.parentEN || ""
-          ).toLowerCase();
-
-        const parentTH =
-          String(
-            item.parentTH || ""
-          ).toLowerCase();
-
-
-        return (
-
-          en.includes(query) ||
-
-          th.includes(query) ||
-
-          parentEN.includes(query) ||
-
-          parentTH.includes(query)
-
-        );
-
-      })
-      .slice(0, 30);
-
-
-  renderSearchResults(results);
-
-}
-
-
-/* ==========================================================
-   SEARCH RESULTS
-========================================================== */
-
-function renderSearchResults(
+function renderResults(
   results
 ) {
 
-  const container =
-    document.getElementById(
-      "searchResults"
-    );
-
-
   if (!results.length) {
 
-    container.innerHTML = `
+    searchResults.innerHTML = `
 
       <div style="
-        padding:18px;
+        padding:20px;
         text-align:center;
         color:#78909c;
         font-size:13px;
       ">
+
         No locations found<br>
+
         ไม่พบสถานที่
+
       </div>
 
     `;
 
-    container.style.display =
+    searchResults.style.display =
       "block";
 
     return;
@@ -2051,351 +1821,366 @@ function renderSearchResults(
   }
 
 
-  container.innerHTML =
+  searchResults.innerHTML =
     results
-      .map(function(item, index) {
+      .map(
+        (item,index) => {
 
-        const typeLabel =
-          item.type === "province"
-            ? "PROVINCE / จังหวัด"
-            : item.type === "district"
-              ? "DISTRICT / อำเภอ"
-              : "SUBDISTRICT / ตำบล";
+          const type =
+            item.type === "province"
+              ? "PROVINCE"
+              : item.type === "district"
+                ? "DISTRICT"
+                : "SUBDISTRICT";
 
 
-        return `
+          return `
 
-          <div
-            class="search-result"
-            data-result-index="${index}"
-          >
+            <div
+              class="result"
+              data-index="${index}"
+            >
 
-            <div class="result-type">
-              ${typeLabel}
-            </div>
+              <div class="resultType">
+                ${type}
+              </div>
 
-            <div class="result-en">
-              ${escapeHTML(
-                item.en
-              )}
-            </div>
+              <div class="resultEnglish">
+                ${escapeHTML(
+                  item.en
+                )}
+              </div>
 
-            <div class="result-th">
-              ${escapeHTML(
-                item.th
-              )}
-            </div>
+              <div class="resultThai">
+                ${escapeHTML(
+                  item.th
+                )}
+              </div>
 
-            ${
-              item.parentEN
-                ? `
-                  <div class="result-parent">
-                    ${escapeHTML(
-                      item.parentEN
-                    )}
-                    ${
-                      item.parentTH
-                        ? " • " +
-                          escapeHTML(
-                            item.parentTH
-                          )
-                        : ""
-                    }
-                  </div>
+              ${
+                item.parentEN
+                ?
                 `
-                : ""
-            }
+                <div class="resultParent">
+                  ${escapeHTML(
+                    item.parentEN
+                  )}
+                  ${
+                    item.parentTH
+                    ?
+                    " • " +
+                    escapeHTML(
+                      item.parentTH
+                    )
+                    :
+                    ""
+                  }
+                </div>
+                `
+                :
+                ""
+              }
 
-          </div>
+            </div>
 
-        `;
+          `;
 
-      })
+        }
+      )
       .join("");
 
 
-  container.style.display =
+  searchResults.style.display =
     "block";
-
-
-  const resultElements =
-    container.querySelectorAll(
-      ".search-result"
-    );
-
-
-  resultElements.forEach(
-    function(element) {
-
-      element.addEventListener(
-        "click",
-        function() {
-
-          const index =
-            Number(
-              element.dataset.resultIndex
-            );
-
-          const item =
-            results[index];
-
-          selectSearchResult(
-            item
-          );
-
-        }
-      );
-
-    }
-  );
-
-}
-
-
-/* ==========================================================
-   SELECT SEARCH RESULT
-========================================================== */
-
-function selectSearchResult(
-  item
-) {
-
-  hideSearchResults();
-
-
-  document.getElementById(
-    "searchInput"
-  ).value =
-    item.en;
-
-
-  showFeatureInfo(
-    item.feature,
-    item.type
-  );
-
-}
-
-
-/* ==========================================================
-   SEARCH HELPERS
-========================================================== */
-
-function hideSearchResults() {
-
-  document.getElementById(
-    "searchResults"
-  ).style.display =
-    "none";
-
-}
-
-
-function clearSearch() {
-
-  document.getElementById(
-    "searchInput"
-  ).value =
-    "";
-
-  document.getElementById(
-    "clearSearch"
-  ).style.display =
-    "none";
-
-  hideSearchResults();
-
-}
-
-
-/* ==========================================================
-   LANGUAGE
-========================================================== */
-
-function setLanguage(
-  language
-) {
-
-  currentLanguage =
-    language;
 
 
   document
     .querySelectorAll(
-      ".lang-button"
+      ".result"
     )
     .forEach(
-      function(button) {
+      element => {
 
-        button.classList.remove(
-          "active"
+        element.addEventListener(
+          "click",
+          function() {
+
+            const index =
+              Number(
+                element.dataset.index
+              );
+
+            const item =
+              results[index];
+
+
+            searchInput.value =
+              item.en;
+
+
+            searchResults.style.display =
+              "none";
+
+
+            showLocation(
+              item.feature,
+              item.type
+            );
+
+          }
         );
 
       }
     );
 
-
-  if (language === "en") {
-
-    document.getElementById(
-      "langEN"
-    ).classList.add(
-      "active"
-    );
-
-  }
-
-
-  if (language === "th") {
-
-    document.getElementById(
-      "langTH"
-    ).classList.add(
-      "active"
-    );
-
-  }
-
-
-  if (language === "both") {
-
-    document.getElementById(
-      "langBoth"
-    ).classList.add(
-      "active"
-    );
-
-  }
-
 }
 
 
-/* ==========================================================
-   LOCATION BUTTON
-========================================================== */
+/* =====================================================
+   CLEAR SEARCH
+===================================================== */
 
-function locateUser() {
+document.getElementById(
+  "clearButton"
+).addEventListener(
+  "click",
+  function() {
 
-  if (!navigator.geolocation) {
+    searchInput.value =
+      "";
 
-    alert(
-      "Your browser does not support location."
-    );
+    searchResults.style.display =
+      "none";
 
-    return;
+    this.style.display =
+      "none";
 
   }
+);
 
 
-  navigator.geolocation.getCurrentPosition(
+/* =====================================================
+   HOME
+===================================================== */
 
-    function(position) {
+document.getElementById(
+  "homeButton"
+).addEventListener(
+  "click",
+  function() {
 
-      const lat =
-        position.coords.latitude;
+    map.setView(
+      [13.7367,100.5231],
+      6
+    );
 
-      const lon =
-        position.coords.longitude;
+    document.getElementById(
+      "locationSection"
+    ).style.display =
+      "none";
+
+    searchInput.value =
+      "";
+
+    searchResults.style.display =
+      "none";
+
+    document.getElementById(
+      "clearButton"
+    ).style.display =
+      "none";
+
+  }
+);
 
 
-      map.setView(
-        [lat, lon],
-        15
-      );
+/* =====================================================
+   LOCATION
+===================================================== */
 
+document.getElementById(
+  "locationButton"
+).addEventListener(
+  "click",
+  function() {
 
-      L.marker(
-        [lat, lon]
-      )
-      .addTo(map)
-      .bindPopup(
-        "Your current location"
-      )
-      .openPopup();
-
-    },
-
-    function(error) {
+    if (
+      !navigator.geolocation
+    ) {
 
       alert(
-        "Unable to access your location."
+        "Geolocation is not supported."
       );
 
-    },
-
-    {
-
-      enableHighAccuracy: true,
-
-      timeout: 10000,
-
-      maximumAge: 60000
+      return;
 
     }
 
-  );
 
-}
+    navigator.geolocation.getCurrentPosition(
 
+      function(position) {
 
-/* ==========================================================
-   HOME BUTTON
-========================================================== */
+        const lat =
+          position.coords.latitude;
 
-function goThailand() {
-
-  map.setView(
-    CONFIG.thailandCenter,
-    CONFIG.thailandZoom
-  );
+        const lng =
+          position.coords.longitude;
 
 
-  currentLocation =
-    null;
+        map.setView(
+          [lat,lng],
+          16
+        );
 
 
-  document.getElementById(
-    "locationCard"
-  ).style.display =
-    "none";
+        L.marker(
+          [lat,lng]
+        )
+        .addTo(map)
+        .bindPopup(
+          "Your location"
+        )
+        .openPopup();
+
+      },
+
+      function() {
+
+        alert(
+          "Unable to access your location."
+        );
+
+      }
+
+    );
+
+  }
+);
 
 
-  clearSearch();
+/* =====================================================
+   LAYER CHECKBOXES
+===================================================== */
 
-}
+document.getElementById(
+  "provinceToggle"
+).addEventListener(
+  "change",
+  updateLayers
+);
 
 
-/* ==========================================================
-   STATUS
-========================================================== */
+document.getElementById(
+  "districtToggle"
+).addEventListener(
+  "change",
+  updateLayers
+);
 
-function setStatus(
-  text
+
+document.getElementById(
+  "subdistrictToggle"
+).addEventListener(
+  "change",
+  updateLayers
+);
+
+
+/* =====================================================
+   LANGUAGE BUTTONS
+===================================================== */
+
+document.getElementById(
+  "enButton"
+).onclick =
+function() {
+
+  setLanguage("en");
+
+};
+
+
+document.getElementById(
+  "thButton"
+).onclick =
+function() {
+
+  setLanguage("th");
+
+};
+
+
+document.getElementById(
+  "bothButton"
+).onclick =
+function() {
+
+  setLanguage("both");
+
+};
+
+
+function setLanguage(
+  language
 ) {
 
-  document.getElementById(
-    "dataStatus"
-  ).textContent =
-    text;
+  document
+    .querySelectorAll(
+      ".lang"
+    )
+    .forEach(
+      button =>
+        button.classList.remove(
+          "active"
+        )
+    );
+
+
+  if (
+    language === "en"
+  ) {
+
+    document.getElementById(
+      "enButton"
+    ).classList.add(
+      "active"
+    );
+
+  }
+
+
+  if (
+    language === "th"
+  ) {
+
+    document.getElementById(
+      "thButton"
+    ).classList.add(
+      "active"
+    );
+
+  }
+
+
+  if (
+    language === "both"
+  ) {
+
+    document.getElementById(
+      "bothButton"
+    ).classList.add(
+      "active"
+    );
+
+  }
 
 }
 
 
-function updateZoomDisplay() {
-
-  if (!map) return;
-
-  document.getElementById(
-    "zoomLevel"
-  ).textContent =
-    map.getZoom();
-
-}
-
-
-/* ==========================================================
-   HTML SAFETY
-========================================================== */
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
 
 function escapeHTML(
   value
@@ -2428,206 +2213,104 @@ function escapeHTML(
 }
 
 
-/* ==========================================================
-   EVENT LISTENERS
-========================================================== */
+/* =====================================================
+   START LOADING
+===================================================== */
+
+async function start() {
+
+  try {
+
+    status(
+      "Loading provinces..."
+    );
+
+    await loadProvinces();
 
 
-/* Search */
+    status(
+      "Loading districts..."
+    );
 
-const searchInput =
-  document.getElementById(
-    "searchInput"
-  );
-
-
-let searchTimer = null;
+    await loadDistricts();
 
 
-searchInput.addEventListener(
-  "input",
-  function() {
+    status(
+      "Loading subdistricts..."
+    );
 
-    const value =
-      searchInput.value;
+    await loadSubdistricts();
+
+
+    status(
+      "Thailand geography ready"
+    );
 
 
     document.getElementById(
-      "clearSearch"
+      "loading"
     ).style.display =
-      value
-        ? "block"
-        : "none";
+      "none";
 
 
-    clearTimeout(
-      searchTimer
+    updateLayers();
+
+  }
+
+  catch(error) {
+
+    console.error(
+      error
     );
 
 
-    searchTimer =
-      setTimeout(
-        function() {
+    document.getElementById(
+      "loading"
+    ).innerHTML = `
 
-          performSearch(
-            value
-          );
+      <div style="
+        font-size:42px;
+      ">
+        ⚠️
+      </div>
 
-        },
-        180
-      );
+      <div style="
+        font-size:17px;
+        font-weight:800;
+        color:#b33d3d;
+      ">
+        Map data could not load
+      </div>
 
-  }
-);
+      <div style="
+        max-width:350px;
+        text-align:center;
+        line-height:1.6;
+        font-size:12px;
+        color:#718894;
+      ">
 
+        Please make sure GitHub Pages has
+        internet access and refresh the page.
 
-searchInput.addEventListener(
-  "keydown",
-  function(event) {
+        <br><br>
 
-    if (
-      event.key === "Escape"
-    ) {
+        Error:
 
-      clearSearch();
+        ${escapeHTML(
+          error.message
+        )}
 
-    }
+      </div>
 
-  }
-);
-
-
-/* Clear */
-
-document.getElementById(
-  "clearSearch"
-).addEventListener(
-  "click",
-  clearSearch
-);
-
-
-/* Home */
-
-document.getElementById(
-  "homeButton"
-).addEventListener(
-  "click",
-  goThailand
-);
-
-
-/* Location */
-
-document.getElementById(
-  "locationButton"
-).addEventListener(
-  "click",
-  locateUser
-);
-
-
-/* Language */
-
-document.getElementById(
-  "langEN"
-).addEventListener(
-  "click",
-  function() {
-
-    setLanguage("en");
+    `;
 
   }
-);
+
+}
 
 
-document.getElementById(
-  "langTH"
-).addEventListener(
-  "click",
-  function() {
-
-    setLanguage("th");
-
-  }
-);
-
-
-document.getElementById(
-  "langBoth"
-).addEventListener(
-  "click",
-  function() {
-
-    setLanguage("both");
-
-  }
-);
-
-
-/* Layers */
-
-document.getElementById(
-  "provinceToggle"
-).addEventListener(
-  "change",
-  updateVisibility
-);
-
-
-document.getElementById(
-  "districtToggle"
-).addEventListener(
-  "change",
-  updateVisibility
-);
-
-
-document.getElementById(
-  "subdistrictToggle"
-).addEventListener(
-  "change",
-  updateVisibility
-);
-
-
-/* Roads */
-
-document.getElementById(
-  "roadToggle"
-).addEventListener(
-  "change",
-  function() {
-
-    /*
-      Roads are provided by the
-      OpenStreetMap base map.
-
-      We cannot turn individual
-      OSM road layers on/off because
-      they are part of the tile image.
-
-      This checkbox is therefore
-      informational.
-    */
-
-    alert(
-      "Roads are provided by OpenStreetMap and are always visible on the base map."
-    );
-
-    this.checked = true;
-
-  }
-);
-
-
-/* ==========================================================
-   START
-========================================================== */
-
-initializeMap();
-
-loadGeography();
+start();
 
 </script>
 
