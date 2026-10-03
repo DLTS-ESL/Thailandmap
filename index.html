@@ -279,6 +279,24 @@ body{
   accent-color:#269bd5;
 }
 
+/* HOVER AREA LABEL */
+
+.areaTooltip{
+  background:#123f55;
+  color:white;
+  border:0;
+  border-radius:8px;
+  padding:7px 10px;
+  box-shadow:0 4px 14px rgba(0,0,0,.22);
+  font-size:13px;
+  font-weight:700;
+  line-height:1.35;
+}
+
+.areaTooltip:before{
+  border-top-color:#123f55 !important;
+}
+
 /* LOCATION */
 
 .location{
@@ -954,15 +972,19 @@ async function loadProvinces(){
       onEachFeature:
       function(feature,layer){
 
+        bindAreaHover(layer, feature, "province");
+
         layer.on({
 
           mouseover:function(e){
 
             e.target.setStyle({
 
-              weight:3,
+              weight:4,
 
-              fillOpacity:.30
+              color:"#00a8ff",
+
+              fillOpacity:.34
 
             });
 
@@ -1064,17 +1086,19 @@ async function loadDistricts(){
       onEachFeature:
       function(feature,layer){
 
+        bindAreaHover(layer, feature, "district");
+
         layer.on({
 
           mouseover:function(e){
 
             e.target.setStyle({
 
-              weight:2,
+              weight:3.5,
 
-              color:"#3f819b",
+              color:"#00a8ff",
 
-              fillOpacity:.15
+              fillOpacity:.20
 
             });
 
@@ -1191,17 +1215,19 @@ async function loadSubdistricts(){
       onEachFeature:
       function(feature,layer){
 
+        bindAreaHover(layer, feature, "subdistrict");
+
         layer.on({
 
           mouseover:function(e){
 
             e.target.setStyle({
 
-              weight:1.5,
+              weight:2.5,
 
-              color:"#6e9aaa",
+              color:"#00a8ff",
 
-              fillOpacity:.13
+              fillOpacity:.18
 
             });
 
@@ -1686,6 +1712,47 @@ function showFeature(
     console.log(e);
 
   }
+
+}
+
+
+/* =========================================================
+   HOVER LABEL + BRIGHT OUTLINE
+========================================================= */
+
+function bindAreaHover(layer, feature, type){
+
+  const p=feature.properties || {};
+
+  const en = type === "province"
+    ? (p.pro_en || "")
+    : type === "district"
+      ? (p.amp_en || "")
+      : (p.tam_en || "");
+
+  const th = type === "province"
+    ? (p.pro_th || "")
+    : type === "district"
+      ? (p.amp_th || "")
+      : (p.tam_th || "");
+
+  const typeText = type === "province"
+    ? "Province / จังหวัด"
+    : type === "district"
+      ? "District / อำเภอ"
+      : "Subdistrict / ตำบล";
+
+  layer.bindTooltip(
+    `<div style="font-size:10px;opacity:.75;margin-bottom:2px">${escapeHTML(typeText)}</div>
+     <div>${escapeHTML(en)}</div>
+     <div style="font-weight:500;opacity:.9">${escapeHTML(th)}</div>`,
+    {
+      sticky:true,
+      direction:"top",
+      className:"areaTooltip",
+      opacity:1
+    }
+  );
 
 }
 
